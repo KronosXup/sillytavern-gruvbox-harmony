@@ -27,4 +27,4 @@ SillyTavern 主题包。[Gruvbox](https://github.com/morhetz/gruvbox) 配色 + H
 
 ## 二改
 
-欢迎。保留出处即可。
+欢迎。[MIT 协议](LICENSE)，保留出处即可。
