@@ -2,6 +2,14 @@
 
 SillyTavern 主题包。[Gruvbox](https://github.com/morhetz/gruvbox) 配色 + HarmonyOS Sans SC 字体，共 20 套。
 
+## 预览
+
+| 暗色（Harmony-Blue） | 浅色（Blue-Light） |
+|---|---|
+| ![dark](screenshots/desktop-harmony-blue.png) | ![light](screenshots/desktop-light-blue.png) |
+
+更多配色与移动端预览见 [screenshots/](screenshots/)。
+
 ## 系列
 
 | 系列 | 目录 | 说明 |
