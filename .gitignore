@@ -3,3 +3,7 @@
 Offline/
 Online/
 
+
+# QQ截图不入库
+QQ*.png
+**/QQ*.png
