@@ -11,7 +11,7 @@ SillyTavern 主题包。[Gruvbox](https://github.com/morhetz/gruvbox) 配色 + H
 | Light | `themes/light/` | 浅色版（Gruvbox 官方 light 色板 + faded 主色） |
 | Online | `themes/online/` | 图标走 iconify 外链，文件更小 |
 
-暗色系配色五种：Aqua / Green / Orange / Pink / Purple；Light 系五种：Blue / Aqua / Green / Orange / Purple（均为官方 faded 色）。
+暗色系配色五种：Blue / Green / Orange / Purple / Violet（前四者为官方色名）；Light 系五种：Blue / Aqua / Green / Orange / Purple（均为官方 faded 色）。
 
 ## 安装
 
