@@ -1,6 +1,6 @@
 # Gruvbox Harmony
 
-SillyTavern 主题包。[Gruvbox](https://github.com/morhetz/gruvbox) 配色 + HarmonyOS Sans SC 字体，共 16 套。
+SillyTavern 主题包。[Gruvbox](https://github.com/morhetz/gruvbox) 配色 + HarmonyOS Sans SC 字体，共 20 套。
 
 ## 系列
 
@@ -8,10 +8,10 @@ SillyTavern 主题包。[Gruvbox](https://github.com/morhetz/gruvbox) 配色 + H
 |---|---|---|
 | Harmony | `themes/harmony/` | 暗色主力，图标替换为 Phosphor 线条风格 |
 | Lite | `themes/lite/` | 保留 Font Awesome 原生图标的轻量版 |
-| Light | `themes/light/` | 浅色版（Gruvbox 官方 light 色板） |
+| Light | `themes/light/` | 浅色版（Gruvbox 官方 light 色板 + faded 主色） |
 | Online | `themes/online/` | 图标走 iconify 外链，文件更小 |
 
-配色各五种：Aqua / Green / Orange / Pink / Purple；Light 系为 Blue。
+暗色系配色五种：Aqua / Green / Orange / Pink / Purple；Light 系五种：Blue / Aqua / Green / Orange / Purple（均为官方 faded 色）。
 
 ## 安装
 
