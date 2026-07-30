@@ -48,3 +48,8 @@ SillyTavern 主题包。[Gruvbox](https://github.com/morhetz/gruvbox) 配色 + H
 ## 二改
 
 欢迎。[MIT 协议](LICENSE)，保留出处即可。
+
+## 配色溯源
+
+- 基础配色（Harmony / Light / Lite / Online）源自 [morhetz/gruvbox](https://github.com/morhetz/gruvbox)
+- Material 变体源自 [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material)（前景降压 + accent 降饱和，"soft contrast 护眼"）
