@@ -1,39 +1,54 @@
 # Gruvbox Harmony v2.2
 
-新增 gruvbox-material 同源变体 + Luker 专属适配 + 控件/弹层体验完善。共 14 个提交。
+消息区布局改版、PC 端计数器重叠修复、Material 变体扩至 10 套、第三方插件适配（构画 / tagfixer / acu）、Luker 与「现代化界面」插件适配。主题总数 20 → 30 套。
 
 ---
 
-## 新增：Material 变体
+## 消息区布局
 
-- 新增 `Gruvbox-Material-Blue` / `Gruvbox-Material-Blue-Light` 两套：源自 [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material)，前景降压 + accent 降饱和，底色结构不变，"soft contrast 护眼"
-- Material 变体 bulkEdit 激活态：暗版 `#7daea3` 光晕、亮版实色底 + 主题色描边
-- README 新增配色溯源段（致谢 morhetz/gruvbox + sainnhe/gruvbox-material）
+- **操作按钮下置**：消息操作按钮排（翻译/图片/复制/编辑等）从名字行移到正文末尾右下角，不再和名字、时间戳挤在一行
+- **操作弹层**：宽度收窄贴合触发按钮、右缘对齐，图标多时自动换两排
+- **编辑态**：编辑按钮排同钉右下角，一排横排
+- **右下角分界**：非最后一条消息的右下角加 L 形细角线（最后一条消息除外，避免和按钮排冲突）
+- **swipe 布局**：PC 端 swipe 计数器与按钮排同行；移动端 swipe 独立一行（按钮排下方）
+- **计数器**：楼层/时间/token 字重调细为 500；修复 PC 端最后一条消息三个计数器重叠
+- **移动端 acu 骰子面板**：面板下移 30px，不再盖住 swipe 计数器和箭头
 
-## Luker 适配
+## 新增变体：Material 扩至 10 套
 
-> 以下规则均以 Luker 专有名（`luker-action-select2` / prompt-manager 结构）限定，**普通 SillyTavern 零命中**。
+- 在 Blue / Blue-Light 基础上，参照 [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material) 官方 palette 新增 **Green / Orange / Purple / Violet** 各深浅版，全套 10 套
+- Material 变体批量编辑激活态：暗版主题色光晕、亮版实色底 + 主题色描边
 
+## 第三方适配
+
+- **构画（ST-SevenDaysCal）**：名字右侧收藏按钮改为绝对定位，不再撑高名字行；移动端按钮跟随名字文字（不再贴右缘）；不装插件时时间戳位置零影响；扩展菜单入口图标统一为 Phosphor 日历
+- **tagfixer 脚本**：消息操作菜单里的 emoji 拳套换成 Phosphor 图标，尺寸对齐同行按钮
+- **smallSysMes**：修复首页欢迎消息多显示头像/名字区，恢复只显示正文按钮
+- **补漏图标**：fa-scissors / fa-cut（拆分聊天）、fa-route（追踪激活来源）换 Phosphor
+
+## toastr / 代码块 / 弹层
+
+- **toastr 弹窗主题化**：主题底色 + 左侧语义色条（成功绿 / 错误红 / 警告黄 / 信息用主题色）+ 标题按类型着色；并修正 2.1 遗留的 toast 串色
+- **代码块**：暗色主题补齐 Gruvbox Dark 语法高亮配色，注释斜体不再失效
+- **下拉弹层滚动条**：透明轨道 + 主题色细 thumb，hover 主题强调色
+
+## Luker 适配（仅 Luker 生效，普通 ST 零命中）
+
+- **世界书选中态**：选中条目头部整圈边框变主题色，去掉内层卡片框
 - **prompt-manager 分组**：子项不越界、内容对齐、组标题胶囊化
-- **luker-action-select2 焦点光晕**：3px 主题色外扩洗光收细为 1px 细环，不再刺眼
-- **select2 展开变形拆除**：大圆角弹层、选项卡片、高亮滑移、选中左竖条全部回落，与 base-select 扁平列表统一
-- **图标补漏**：补 5 个 Luker 新增/漏网图标替换（取消分组 selection-slash、请求检查 cell-tower、debug bug-beetle、code、排序 sort-ascending）
+- **select2 展开**：弹层扁平化，与 base-select 一致；焦点 1px 主题色细环
+- **补 5 个图标替换**：取消分组、请求检查、debug、代码、排序
 
-## 批量编辑（bulkEdit）激活态
+## 「现代化界面」插件适配（装插件时可见）
 
-- 暗色 10 套：与世界书 `world_set` 统一光晕，每套用自己的色系（Blue 青 / Green 黄绿 / Orange 橙 / Purple 紫 / Violet 紫罗兰）
-- 亮版 5 套：实色底 `color-mix(主题色 22%)` + 主题色描边
-
-## 控件与弹层
-
-- **base-select 弹层滚动条融入化**：透明轨道 + 主题色细 thumb，hover 主题强调色（22 套，含 Lite）
-- **toastr 弹窗主题化**：主题底 + 左侧语义色条（成功绿 / 错误红 / 警告黄 / 信息水色）+ 标题按类型着色（22 套，含 Lite）
-- **代码块**：暗色三系补 Gruvbox Dark hljs 配色 + 容器文字色（亮色走分离、暗色走融合，底色融进聊天底不加边框，修注释斜体不生效）
-
-## 「现代化界面」插件适配
-
-> 以下规则均以 `body.th-modern-enabled` 限定，未安装插件时零影响。
-
-- **快捷插入位置 select**：高度自适应 + `min-width: 110px` 防极窄文字溢出（限定 select 元素，同 class 的 checkbox 不受影响）
-- **推理块按钮**：hover 正方形化
+- **世界书快捷插入位置 select**：高度自适应 + 最小宽度，不再被 grid 压扁文字溢出（仅 select 元素，同 class 的 checkbox 不受影响）
+- **推理块按钮**：hover 方形化
 - **世界书 picker 搜索框**：聚焦去内框
+
+---
+
+### 升级须知
+
+- 升级后需**切换一次主题**（切到别的再切回来）让 ST 重新加载 custom_css
+- 手机端同样需要切换主题生效
+- 未安装构画 / tagfixer / acu / Luker / 「现代化界面」的用户不受对应适配影响
