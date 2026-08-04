@@ -1270,7 +1270,7 @@ div[is_user="false"] {
 .fa-solid:not(#load-spinner):hover,
 .drawer-icon:hover,
 #top-bar .fa-solid:hover {
-  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--SmartThemeQuoteColor) 40%, transparent));
+  filter: drop-shadow(0 0 4px #{$tint-40});
 }
 
 .avatar-container.interactable:hover,
@@ -1284,7 +1284,7 @@ div[is_user="false"] {
 /* 底部三按钮更强发光 + 放大 */
 #send_form .fa-solid:hover,
 #send_form a:hover {
-  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--SmartThemeQuoteColor) 60%, transparent));
+  filter: drop-shadow(0 0 6px #{$tint-60});
 }
 
 /* 按钮内图标放大 */
@@ -1297,7 +1297,7 @@ div[is_user="false"] {
 
 .avatar img:hover,
 .character_select:hover .avatar img {
-  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--SmartThemeQuoteColor) 30%, transparent));
+  filter: drop-shadow(0 0 6px #{$tint-30});
 }
 
 /* ============================================================
@@ -1314,7 +1314,7 @@ div[is_user="false"] {
 #options_button:hover .fa-solid,
 #options_button:hover {
   animation: icon-shake 0.4s ease-in-out;
-  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--SmartThemeQuoteColor) 40%, transparent));
+  filter: drop-shadow(0 0 4px #{$tint-40});
 }
 
 @keyframes icon-shake {
@@ -1331,7 +1331,7 @@ div[is_user="false"] {
 }
 
 #extensionsMenuButton:hover {
-  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--SmartThemeQuoteColor) 40%, transparent));
+  filter: drop-shadow(0 0 4px #{$tint-40});
 }
 
 @keyframes icon-spin {
@@ -1342,15 +1342,15 @@ div[is_user="false"] {
 /* --- 发送按钮：hover 发光 + active 变暗（不用transform防撑边框） --- */
 #send_but {
   transition: filter 0.35s ease-out, opacity 0.2s ease-out;
-  filter: drop-shadow(0 0 2px color-mix(in srgb, var(--SmartThemeQuoteColor) 20%, transparent));
+  filter: drop-shadow(0 0 2px #{$tint-20});
 }
 
 #send_but:hover {
-  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--SmartThemeQuoteColor) 60%, transparent));
+  filter: drop-shadow(0 0 8px #{$tint-60});
 }
 
 #send_but:active {
-  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--SmartThemeQuoteColor) 30%, transparent));
+  filter: drop-shadow(0 0 4px #{$tint-30});
   opacity: 0.7;
 }
 
@@ -1438,7 +1438,7 @@ html body div#sheld div#chat {
 
 /* hover 发光 */
 #top-settings-holder .drawer-icon:hover {
-  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--SmartThemeQuoteColor) 40%, transparent));
+  filter: drop-shadow(0 0 4px #{$tint-40});
   transform: scale(1.1);
 }
 
@@ -1528,8 +1528,8 @@ html body div#sheld div#chat {
 }
 
 @keyframes star-twinkle {
-  0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px color-mix(in srgb, var(--SmartThemeQuoteColor) 80%, transparent)); }
-  50% { opacity: 0.5; filter: drop-shadow(0 0 6px color-mix(in srgb, var(--SmartThemeQuoteColor) 100%, transparent)); }
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px #{$tint-80}); }
+  50% { opacity: 0.5; filter: drop-shadow(0 0 6px var(--SmartThemeQuoteColor)); }
 }
 
 /* API 断连状态图标 - 插头+警告圆圈相交，Gruvbox红 */

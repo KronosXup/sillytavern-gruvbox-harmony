@@ -9,6 +9,9 @@ node_modules/
 # IDE缓存
 .qoder/
 
+# shell环境误创建的Windows设备名文件
+nul
+
 
 # QQ截图不入库
 QQ*.png

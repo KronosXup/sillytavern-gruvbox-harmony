@@ -2,3 +2,10 @@
 $theme-name: "Gruvbox-Harmony-Blue";
 $t01: "rgba(131, 165, 152, 1)";
 $t02: "rgba(131, 165, 152, 1)";
+
+// accent半透明梯度(hover光晕用,构建时算好避免filter内color-mix不被插值)
+$tint-20: "rgba(131, 165, 152, 0.2)";
+$tint-30: "rgba(131, 165, 152, 0.3)";
+$tint-40: "rgba(131, 165, 152, 0.4)";
+$tint-60: "rgba(131, 165, 152, 0.6)";
+$tint-80: "rgba(131, 165, 152, 0.8)";

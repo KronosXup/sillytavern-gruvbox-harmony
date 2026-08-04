@@ -3,6 +3,7 @@
  *   node scripts/build.js            构建并写入 themes/(先对账,语义不一致直接拒绝写)
  *   node scripts/build.js --dry      只对账不写入
  *   node scripts/build.js --only X   只构建某一套
+ *   node scripts/build.js --force    有意变更时用:跳过语义对账直接写入
  */
 const fs = require('fs');
 const path = require('path');
@@ -154,6 +155,7 @@ function flatTokens(css) {
 
 const args = process.argv.slice(2);
 const DRY = args.includes('--dry');
+const FORCE = args.includes('--force');
 const onlyIdx = args.indexOf('--only');
 const ONLY = onlyIdx >= 0 ? args[onlyIdx + 1] : null;
 
@@ -173,6 +175,15 @@ for (const [gname, g] of Object.entries(GROUPS)) {
     const data = JSON.parse(fs.readFileSync(jp, 'utf8'));
     const orig = data.custom_css;
     if (orig === gen) { console.log('逐字节一致 ✓'); same++; continue; }
+    if (FORCE) {
+      changed++;
+      if (!DRY) {
+        data.custom_css = gen;
+        fs.writeFileSync(jp, JSON.stringify(data, null, 2), 'utf8');
+      }
+      console.log(`[--force] 跳过对账${DRY ? ' [dry]' : ' 已写入'}`);
+      continue;
+    }
     const sd = semanticDiff(orig, gen);
     if (sd) {
       console.log('!! 语义差异(拒绝写入):\n' + sd);
