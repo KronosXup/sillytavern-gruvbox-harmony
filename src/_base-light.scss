@@ -4,22 +4,13 @@
  * https://github.com/KronosXup/sillytavern-gruvbox-harmony
  * ============================================================ */
 
-/* ---字体加载--- */
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.0/index.css');
-@import url('https://cdn.jsdelivr.net/npm/@lobehub/webfont-harmony-sans-sc@1.0.0/css/index-full.css');
-@import url('https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-sans-sc-vf/font.css');
-
-/* ---字体变量--- */
 // ===== 头像双态取值: 模式0=电影大卡, 模式1=传统小圆 =====
 // 编译为运行时calc, 由 #chat 上的 --avatar-mode 变量切换(用户改JSON里那个数字)
 @function dual($m0, $m1) {
   @return unquote("calc(#{$m0} * (1 - var(--avatar-mode)) + #{$m1} * var(--avatar-mode))");
 }
-:root {
-  --font-sans: 'HarmonyOS Sans SC', system-ui, sans-serif;
-  --font-serif: 'HarmonyOS Sans SC', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Cascadia Code', ui-monospace, Menlo, Consolas, 'Source Han Sans SC VF', monospace;
-}
+
+/* ---FONTS--- */
 
 /* ===== 头像样式开关 ===== */
 /* 改下面的 --avatar-mode 数值切换头像样式:

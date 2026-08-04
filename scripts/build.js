@@ -39,6 +39,13 @@ function themeJsonPath(name) {
  * 同理: sass 会把 alpha=1 的 rgba() 简化成 rgb(), 故 alpha=1 的 rgba 也走占位符旁路 */
 const ATTR_RE = /\[[\w-]+[~|^$*]?="[^"\n]*"\]/g;
 const RGBA1_RE = /rgba\([^)\n]*,\s*1\.?0?\s*\)/g;
+/* 字体块: 优先用 src/_fonts-local.scss(本地自定义, gitignore), 否则用默认 _fonts.scss
+ * 本地文件存在时构建会在开头提示 */
+const FONTS_LOCAL = path.join(ROOT, 'src', '_fonts-local.scss');
+const FONTS_DEFAULT = path.join(ROOT, 'src', '_fonts.scss');
+const usingLocalFonts = fs.existsSync(FONTS_LOCAL);
+const FONTS_BLOCK = fs.readFileSync(usingLocalFonts ? FONTS_LOCAL : FONTS_DEFAULT, 'utf8').replace(/\r\n/g, '\n').trim();
+if (usingLocalFonts) console.log('[字体] 使用本地自定义: src/_fonts-local.scss');
 function compileTheme(name, template) {
   let src = fs.readFileSync(path.join(ROOT, 'src', template), 'utf8');
   const attrs = [];
@@ -53,6 +60,7 @@ function compileTheme(name, template) {
   });
   let css = out.css;
   attrs.forEach((a, i) => { css = css.split(`__ATTRSEL${i}__`).join(a); });
+  css = css.replace('/* ---FONTS--- */', FONTS_BLOCK + '\n');
   return postFormat(css);
 }
 

@@ -1,6 +1,17 @@
  Gruvbox Harmony 主题字体替换指南
 
-> 改主题字体只需改两处：@import 链接 + --font-* 变量。改完保存 JSON 重新导入主题即可，不动任何布局。
+> 两种改法：改成品 JSON（一、四节）或改源层（推荐，见第零节——clone 仓库的用户一次配置永久生效，拉新版不丢字体）。
+
+
+ 零、源层自定义字体（clone 仓库用户推荐）
+
+字体定义已从模板抽到 `src/_fonts.scss`，构建时注入。自定义流程：
+
+1. `src/_fonts.scss` 复制一份改名为 `src/_fonts-local.scss`（已 gitignore，永远不会被 pull 覆盖）
+2. 改 `_fonts-local.scss` 里的 @import 链接和 --font-* 变量（改法同下文第一、二节）
+3. `node scripts/build.js` 构建，产物 `themes/` 下的 JSON 直接导入酒馆
+
+之后仓库更新只需 `git pull` + 重新构建，字体配置不动。构建时若检测到本地字体文件会在开头提示 `[字体] 使用本地自定义`。
 
 
  一、找到要改的位置

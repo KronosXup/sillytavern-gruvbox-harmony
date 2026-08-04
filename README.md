@@ -100,6 +100,10 @@ $toast-error: "#fb4934";  // toast错误色
 
 令牌是带引号的字符串，引号不要丢——防 sass 把颜色值规范化改名。
 
+### 换字体（一次配置永久生效）
+
+把 `src/_fonts.scss` 复制为 `src/_fonts-local.scss`（已 gitignore）再改里面的 @import 和 --font-* 变量，构建即生效；`git pull` 拉新版不会覆盖它。详见 [docs/FONT-GUIDE.md](docs/FONT-GUIDE.md) 第零节。
+
 ### 新增一套配色主题
 
 1. 复制一个现有 token 文件改名，改里面的 `$theme-name` 和颜色
