@@ -102,7 +102,7 @@ $toast-error: "#fb4934";  // toast错误色
 
 ### 换字体（一次配置永久生效）
 
-把 `src/_fonts.scss` 复制为 `src/_fonts-local.scss`（已 gitignore）再改里面的 @import 和 --font-* 变量，构建即生效；`git pull` 拉新版不会覆盖它。详见 [docs/FONT-GUIDE.md](docs/FONT-GUIDE.md) 第零节。
+把 `src/_fonts.scss` 复制为 `src/_fonts-local.scss`（已 gitignore）再改里面的 @import 和 --font-* 变量，构建即生效；`git pull` 拉新版不会覆盖它。详见 [docs/FONT-GUIDE.md](docs/FONT-GUIDE.md) 第一节。
 
 ### 新增一套配色主题
 

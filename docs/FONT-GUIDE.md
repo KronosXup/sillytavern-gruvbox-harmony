@@ -1,20 +1,20 @@
  Gruvbox Harmony 主题字体替换指南
 
-> 两种改法：改成品 JSON（一、四节）或改源层（推荐，见第零节——clone 仓库的用户一次配置永久生效，拉新版不丢字体）。
+> 两种改法：改成品 JSON（二、五节）或改源层（推荐，见第一节——clone 仓库的用户一次配置永久生效，拉新版不丢字体）。
 
 
- 零、源层自定义字体（clone 仓库用户推荐）
+ 一、源层自定义字体（clone 仓库用户推荐）
 
 字体定义已从模板抽到 `src/_fonts.scss`，构建时注入。自定义流程：
 
 1. `src/_fonts.scss` 复制一份改名为 `src/_fonts-local.scss`（已 gitignore，永远不会被 pull 覆盖）
-2. 改 `_fonts-local.scss` 里的 @import 链接和 --font-* 变量（改法同下文第一、二节）
+2. 改 `_fonts-local.scss` 里的 @import 链接和 --font-* 变量（改法同下文第二、三节）
 3. `node scripts/build.js` 构建，产物 `themes/` 下的 JSON 直接导入酒馆
 
 之后仓库更新只需 `git pull` + 重新构建，字体配置不动。构建时若检测到本地字体文件会在开头提示 `[字体] 使用本地自定义`。
 
 
- 一、找到要改的位置
+ 二、找到要改的位置
 
 用记事本/VSCode 打开主题 JSON（如 Gruvbox-Harmony-Aqua.json），搜「---字体加载---」这一节：
 
@@ -47,7 +47,7 @@
 > 之前最后一位是 HarmonyOS Sans SC，它不是等宽字体，所以换成了思源。
 
 
- 二、换成霞鹜文楷（示例）
+ 三、换成霞鹜文楷（示例）
 
  1. 改 @import
 
@@ -71,7 +71,7 @@
 注意 family 名必须和 CDN 包里的 font-family 完全一致（区分大小写、空格），否则会回退到 system-ui。
 
 
- 三、常见字体 CDN 和 family 名对照
+ 四、常见字体 CDN 和 family 名对照
 
 | 字体 | @import 链接 | family 名 |
 |------|------------|----------|
@@ -89,7 +89,7 @@
 > 所有链接加前缀 https://cdn.jsdelivr.net/npm/
 
 
- 四、只改 --font-mono 不碰其他
+ 五、只改 --font-mono 不碰其他
 
 主题默认 mono 中文 fallback 从 HarmonyOS 改成了 Source Han Sans SC VF。若不想要它：
 
@@ -98,15 +98,15 @@
 即删掉最后的 'Source Han Sans SC VF' 手动降级为系统等宽。
 
 
- 五、改完不生效的排查
+ 六、改完不生效的排查
 
 1. 打开浏览器 F12 → Network，看那些 CSS 是不是 200。404 就是链接写错了
 2. Elements 选中 body，看 Computed → font-family 是不是你写的名字。如果是 system-ui 就是 family 名拼错了
-3. 主题没重新加载：酒馆设置里点一次「重新加载主题」，或彻底重启酒馆
+3. 主题没重新加载：新版酒馆的激活主题 CSS 存在 settings 里，覆盖主题文件后要先 F5 刷新页面，再在下拉框切换一次主题（切到别的再切回来）才会从磁盘重读
 4. 正文字体生效但下拉/输入框不生效：v1.5.1+ 已 fix，所有表单元素显式用 var(--font-sans)
 
 
- 六、关于布局
+ 七、关于布局
 
 font-family 只影响字形，不参与盒模型计算（margin/padding/width 都不变），所以改字体不会破坏任何布局。
 
