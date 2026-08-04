@@ -88,7 +88,15 @@ node scripts/build.js --force    # 有意变更时跳过对账
 
 ### 改配色（最简单的二创）
 
-只需改 `src/tokens/Gruvbox-xxx.scss` 里的颜色值，重跑构建。令牌是带引号的字符串（`$t01: "#83a598";`），引号不要丢——防 sass 把颜色值规范化改名。
+只需改 `src/tokens/Gruvbox-xxx.scss` 里的颜色值，重跑构建。令牌已语义化命名，暗色每套 7 个（accent + 光晕梯度），亮色每套 22 个，每个都有中文注释，例如：
+
+```scss
+$accent: "#076678";       // 主题accent
+$icon-color: "3c3836";    // 图标SVG填色
+$toast-error: "#fb4934";  // toast错误色
+```
+
+令牌是带引号的字符串，引号不要丢——防 sass 把颜色值规范化改名。
 
 ### 新增一套配色主题
 

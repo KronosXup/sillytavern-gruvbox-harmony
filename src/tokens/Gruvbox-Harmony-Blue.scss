@@ -1,7 +1,9 @@
-// Gruvbox-Harmony-Blue 令牌值(参照)
+// Gruvbox-Harmony-Blue 令牌值(语义化)
 $theme-name: "Gruvbox-Harmony-Blue";
-$t01: "rgba(131, 165, 152, 1)";
-$t02: "rgba(131, 165, 152, 1)";
+// 发送键羽毛笔填充
+$quill-fill: "rgba(131, 165, 152, 1)";
+// 发送键羽毛笔划线
+$quill-stroke: "rgba(131, 165, 152, 1)";
 
 // accent半透明梯度(hover光晕用,构建时算好避免filter内color-mix不被插值)
 $tint-20: "rgba(131, 165, 152, 0.2)";

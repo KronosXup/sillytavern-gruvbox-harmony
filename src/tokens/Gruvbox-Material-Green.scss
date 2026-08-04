@@ -1,7 +1,9 @@
 // Gruvbox-Material-Green 令牌值(迁移脚本自动生成, 语义名待人工整理)
 $theme-name: "Gruvbox-Material-Green";
-$t01: "rgba(169, 182, 101, 1)"; // 参照: rgba(131, 165, 152, 1)
-$t02: "rgba(169, 182, 101, 1)"; // 参照: rgba(131, 165, 152, 1)
+// 发送键羽毛笔填充
+$quill-fill: "rgba(169, 182, 101, 1)"; // 参照: rgba(131, 165, 152, 1)
+// 发送键羽毛笔划线
+$quill-stroke: "rgba(169, 182, 101, 1)"; // 参照: rgba(131, 165, 152, 1)
 
 // accent半透明梯度(hover光晕用,构建时算好避免filter内color-mix不被插值)
 $tint-20: "rgba(169, 182, 101, 0.2)";

@@ -1363,7 +1363,7 @@ div[is_user="false"] {
   display: inline-block !important;
   width: 1.2em !important;
   height: 1.2em !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22#{$t01}%22 d=%22M22 2s-7.64-.37-13.66 7.88C3.72 16.21 2 22 2 22l1.94-1c1.44-2.5 2.19-3.53 3.6-5c2.53.74 5.17.65 7.46-2c-2-.56-3.6-.43-5.96-.19C11.69 12 13.5 11.6 16 12l1-2c-1.8-.34-3-.37-4.78.04C14.19 8.65 15.56 7.87 18 8l1.21-1.93c-1.56-.11-2.5.06-4.29.5c1.61-1.46 3.08-2.12 5.22-2.25c0 0 1.05-1.89 1.86-2.32%22/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 4%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 2 Q25 0 50 2 T100 2%22 fill=%22none%22 stroke=%22#{$t02}%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22#{$quill-fill}%22 d=%22M22 2s-7.64-.37-13.66 7.88C3.72 16.21 2 22 2 22l1.94-1c1.44-2.5 2.19-3.53 3.6-5c2.53.74 5.17.65 7.46-2c-2-.56-3.6-.43-5.96-.19C11.69 12 13.5 11.6 16 12l1-2c-1.8-.34-3-.37-4.78.04C14.19 8.65 15.56 7.87 18 8l1.21-1.93c-1.56-.11-2.5.06-4.29.5c1.61-1.46 3.08-2.12 5.22-2.25c0 0 1.05-1.89 1.86-2.32%22/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 4%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 2 Q25 0 50 2 T100 2%22 fill=%22none%22 stroke=%22#{$quill-stroke}%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") !important;
   background-repeat: no-repeat, no-repeat !important;
   background-position: center, left 100% !important;
   background-size: contain, 0% 2px !important;
