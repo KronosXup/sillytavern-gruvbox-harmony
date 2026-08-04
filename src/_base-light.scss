@@ -5401,8 +5401,8 @@ body.th-modern-enabled .th-modern-mobile-world-picker-search input:focus {
   #chat .mes .mesAvatarWrapper {
     position: absolute !important;
     top: 8px !important;
-    left: dual("50%", "4px") !important;
-    right: dual("0px", "4px") !important;
+    left: dual("50%", "8px") !important;
+    right: dual("0px", "8px") !important;
     transform: translateX(dual("-50%", "0px")) !important;
     width: dual("min(90vw - 20px, 480px)", "100%") !important;
     height: dual("min((90vw - 20px) * 0.5625, 270px)", "var(--mb-avatar)") !important;
@@ -5467,7 +5467,7 @@ body.th-modern-enabled .th-modern-mobile-world-picker-search input:focus {
     top: auto !important;
     left: auto !important;
     right: auto !important;
-    margin: dual("(min((90vw - 20px) * 0.5625, 270px) + 40px)", "calc(var(--mb-avatar) - 3px)") 0 0 dual("10px", "0px") !important;
+    margin: dual("(min((90vw - 20px) * 0.5625, 270px) + 40px)", "calc(var(--mb-avatar) - 8px)") 0 0 dual("10px", "0px") !important;
     margin-right: 0 !important;
     padding: dual("0px", "1px") dual("0px", "6px") !important;
     font-size: dual("var(--mainFontSize) * 0.66", "var(--mainFontSize) * 0.66") !important;
