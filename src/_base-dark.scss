@@ -5249,11 +5249,11 @@ code {
     left: dual("50%", "72px") !important;
     right: auto !important;
     transform: translateX(dual("-50%", "0px")) !important;
-    width: dual("500px", "0px") !important;
+    width: dual("min(500px, 100%)", "0px") !important;
     height: dual("281px", "var(--pc-chip-h)") !important;
-    min-width: dual("500px", "0px") !important;
+    min-width: dual("min(500px, 100%)", "0px") !important;
     min-height: dual("281px", "var(--pc-chip-h)") !important;
-    max-width: dual("500px", "9999px") !important;
+    max-width: dual("min(500px, 100%)", "9999px") !important;
     max-height: dual("281px", "var(--pc-chip-h)") !important;
     flex: none !important;
     display: block !important;
@@ -5371,7 +5371,7 @@ code {
     border-radius: 0 !important;
     padding: 0 !important;
     top: dual("301px", "4px") !important;
-    left: dual("(50% - 236px)", "0px") !important;
+    left: dual("(50% - 0.5 * min(472px, 100% - 16px))", "0px") !important;
   }
   #chat .mes .ch_name .alignItemsBaseline {
     display: flex !important;
@@ -5380,9 +5380,10 @@ code {
     align-items: center !important;
     column-gap: 8px !important;
     width: auto !important;
+    max-width: 100% !important;
   }
   #chat .mes .ch_name .name_text {
-    flex: 0 0 auto !important;
+    flex: 0 1 auto !important;
     display: block !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -5402,7 +5403,7 @@ code {
     left: 50% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
-    width: dual("520px", "0px") !important;
+    width: dual("min(520px, 100%)", "0px") !important;
     height: dual("327px", "0px") !important;
     border-radius: 14px !important;
     background: color-mix(in srgb, var(--SmartThemeBlurTintColor) 88%, transparent) !important;
