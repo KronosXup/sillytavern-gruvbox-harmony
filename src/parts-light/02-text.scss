@@ -1,0 +1,77 @@
+/* ============================================================
+ * 引号文本 - 左竖线 + 底色 + 微缩进 组合拳
+ * SillyTavern 用 <q> 标签包裹引号文字
+ * ============================================================ */
+.mes_text q {
+  font-family: var(--font-serif) !important;
+  color: var(--SmartThemeQuoteColor) !important;
+  background: color-mix(in srgb, var(--SmartThemeQuoteColor) 10%, transparent);
+  border-left: 3px solid var(--SmartThemeQuoteColor);
+  padding: 0 6px 0 8px;
+  margin: 0 2px;
+  border-radius: 0 4px 4px 0;
+  text-decoration: none !important;
+}
+
+/* blockquote 也留着以防有用 */
+.mes_text blockquote {
+  font-family: var(--font-serif) !important;
+  border-left: 3px solid var(--SmartThemeQuoteColor);
+  background: color-mix(in srgb, var(--SmartThemeQuoteColor) 10%, transparent);
+  padding: 8px 12px 8px 14px;
+  margin: 4px 0 4px 8px;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ============================================================
+ * 代码块
+ * ============================================================ */
+code {
+  background-color: var(--SmartThemeShadowColor);
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: var(--SmartThemeShadowColor) !important;
+  border-radius: 6px;
+  padding: 12px;
+  overflow-x: auto;
+}
+
+pre code {
+  background: transparent !important;
+  padding: 0;
+  border-radius: 0;
+}
+
+pre code.hljs {
+  background: transparent !important;
+}
+
+.hljs {
+  background: var(--SmartThemeShadowColor);
+  border-radius: 6px;
+}
+
+/* ============================================================
+ * 滚动条
+ * ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--SmartThemeQuoteColor) 50%, transparent);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--SmartThemeQuoteColor);
+}
+

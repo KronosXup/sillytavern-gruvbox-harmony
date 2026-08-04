@@ -1,0 +1,244 @@
+/* ============================================================
+ * 图标悬停发光动效 - v3.2
+ * ============================================================ */
+
+/* 所有交互图标统一 transition */
+.interactable,
+.fa-solid:not(#load-spinner),
+.drawer-icon,
+.menu_button .fa-solid,
+#send_form .fa-solid,
+#send_form a,
+#top-settings-holder .fa-solid,
+#top-bar .fa-solid {
+  transition: filter 0.35s ease-out, transform 0.35s ease-out;
+}
+
+/* 通用 hover 发光 + 放大(排除大容器) */
+.interactable:hover,
+.fa-solid:not(#load-spinner):hover,
+.drawer-icon:hover,
+#top-bar .fa-solid:hover {
+  filter: drop-shadow(0 0 4px #{$tint-40});
+}
+
+.avatar-container.interactable:hover,
+.character_select.interactable:hover,
+.group_select.interactable:hover,
+.group_member.interactable:hover,
+.bogus_folder_select.interactable:hover {
+  filter: none !important;
+}
+
+/* 底部三按钮更强发光 + 放大 */
+#send_form .fa-solid:hover,
+#send_form a:hover {
+  filter: drop-shadow(0 0 6px #{$tint-60});
+}
+
+/* 按钮内图标放大 */
+
+/* 角色头像悬停微光 */
+.avatar img,
+.character_select .avatar img {
+  transition: filter 0.35s ease-out;
+}
+
+.avatar img:hover,
+.character_select:hover .avatar img {
+  filter: drop-shadow(0 0 6px #{$tint-30});
+}
+
+/* ============================================================
+ * 底部三按钮各自动效 - v3.3 新增
+ * 汉堡菜单→抖动 / 魔杖→旋转 / 发送→书写摆动
+ * ============================================================ */
+
+/* --- 汉堡菜单：hover 抖动 --- */
+#options_button .fa-solid,
+#options_button {
+  transition: filter 0.35s ease-out;
+}
+
+#options_button:hover .fa-solid,
+#options_button:hover {
+  animation: icon-shake 0.4s ease-in-out;
+  filter: drop-shadow(0 0 4px #{$tint-40});
+}
+
+@keyframes icon-shake {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  20% { transform: translateX(-2px) rotate(-3deg); }
+  40% { transform: translateX(2px) rotate(3deg); }
+  60% { transform: translateX(-2px) rotate(-3deg); }
+  80% { transform: translateX(2px) rotate(3deg); }
+}
+
+/* --- 魔杖：hover 旋转 --- */
+#extensionsMenuButton {
+  transition: filter 0.35s ease-out;
+}
+
+#extensionsMenuButton:hover {
+  filter: drop-shadow(0 0 4px #{$tint-40});
+}
+
+@keyframes icon-spin {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+/* --- 发送按钮：hover 发光 + active 变暗（不用transform防撑边框） --- */
+#send_but {
+  transition: filter 0.35s ease-out, opacity 0.2s ease-out;
+  filter: drop-shadow(0 0 2px #{$tint-20});
+}
+
+#send_but:hover {
+  filter: drop-shadow(0 0 8px #{$tint-60});
+}
+
+#send_but:active {
+  filter: drop-shadow(0 0 4px #{$tint-30});
+  opacity: 0.7;
+}
+
+
+/* ============================================================
+ * 发送按钮 - mdi:feather 羽毛笔 + 书写轨迹动效 - v3.6
+ * ============================================================ */
+#send_but::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22#{$quill-fill}%22 d=%22M22 2s-7.64-.37-13.66 7.88C3.72 16.21 2 22 2 22l1.94-1c1.44-2.5 2.19-3.53 3.6-5c2.53.74 5.17.65 7.46-2c-2-.56-3.6-.43-5.96-.19C11.69 12 13.5 11.6 16 12l1-2c-1.8-.34-3-.37-4.78.04C14.19 8.65 15.56 7.87 18 8l1.21-1.93c-1.56-.11-2.5.06-4.29.5c1.61-1.46 3.08-2.12 5.22-2.25c0 0 1.05-1.89 1.86-2.32%22/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 4%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 2 Q25 0 50 2 T100 2%22 fill=%22none%22 stroke=%22#{$quill-stroke}%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat, no-repeat !important;
+  background-position: center, left 100% !important;
+  background-size: contain, 0% 2px !important;
+  transition: background-size 0.8s ease-out, transform 0.3s ease-out !important;
+  transform-origin: 50% 80% !important;
+}
+#send_but:hover::before {
+  background-size: contain, 100% 2px !important;
+  animation: quill-swing 1.5s ease-in-out infinite !important;
+}
+
+@keyframes quill-swing {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* 书写轨迹 */
+#send_but {
+  position: relative !important;
+}
+
+#send_but::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  width: 0 !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, var(--SmartThemeQuoteColor), transparent) !important;
+  pointer-events: none !important;
+}
+
+#send_but:hover::after {
+  animation: quill-trail 1.5s ease-in-out infinite !important;
+}
+
+@keyframes quill-trail {
+  0% { width: 0; left: 50%; opacity: 0; }
+  30% { opacity: 1; }
+  50% { width: 120%; left: -10%; opacity: 1; }
+  70% { opacity: 1; }
+  100% { width: 0; left: 50%; opacity: 0; }
+}
+
+/* 聊天框上半方角，下半圆角 */
+html body div#sheld div#chat {
+  border-radius: 0 0 6px 6px;
+}
+
+/* ============================================================
+ * 顶栏图标替换 - Phosphor - v3.11d
+ * ============================================================ */
+
+/* 杀掉 FA */
+#top-settings-holder .drawer-icon::before {
+  content: none !important;
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* 容器 */
+#top-settings-holder .drawer-icon {
+  position: relative !important;
+  width: 1.1em !important;
+  height: 1.1em !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: none !important;
+  transition: filter 0.35s ease-out !important;
+}
+
+/* hover 发光 */
+#top-settings-holder .drawer-icon:hover {
+  filter: drop-shadow(0 0 4px #{$tint-40});
+  transform: scale(1.1);
+}
+
+/* ::after 放图标 */
+#top-settings-holder .drawer-icon::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  pointer-events: none !important;
+  display: block !important;
+}
+
+#ai-config-button .drawer-icon::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M40 88h33a32 32 0 0 0 62 0h81a8 8 0 0 0 0-16h-81a32 32 0 0 0-62 0H40a8 8 0 0 0 0 16m64-24a16 16 0 1 1-16 16a16 16 0 0 1 16-16m112 104h-17a32 32 0 0 0-62 0H40a8 8 0 0 0 0 16h97a32 32 0 0 0 62 0h17a8 8 0 0 0 0-16m-48 24a16 16 0 1 1 16-16a16 16 0 0 1-16 16'/></svg>") !important;
+}
+
+#API-status-top.drawer-icon::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M237.66 66.34a8 8 0 0 0-11.32 0L192 100.69L155.31 64l34.35-34.34a8 8 0 1 0-11.32-11.32L144 52.69l-26.34-26.35a8 8 0 0 0-11.32 11.32l6.35 6.34l-53 53a40 40 0 0 0 0 56.57l15.71 15.71l-49.06 49.06a8 8 0 0 0 11.32 11.32l49.09-49.09l15.71 15.71a40 40 0 0 0 56.57 0l53-53l6.34 6.35a8 8 0 0 0 11.32-11.32L203.31 112l34.35-34.34a8 8 0 0 0 0-11.32M147.72 185a24 24 0 0 1-33.95 0L71 142.23a24 24 0 0 1 0-33.95l53-53L200.69 132Z'/></svg>") !important;
+}
+
+#advanced-formatting-button .drawer-icon::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect width='256' height='256' fill='none'/><path d='M84.27,171.73l-55.09-20.3a7.92,7.92,0,0,1,0-14.86l55.09-20.3,20.3-55.09a7.92,7.92,0,0,1,14.86,0l20.3,55.09,55.09,20.3a7.92,7.92,0,0,1,0,14.86l-55.09,20.3-20.3,55.09a7.92,7.92,0,0,1-14.86,0Z' fill='none' stroke='%23d5c4a1' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/><line x1='176' y1='16' x2='176' y2='64' fill='none' stroke='%23d5c4a1' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/><line x1='224' y1='72' x2='224' y2='104' fill='none' stroke='%23d5c4a1' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/><line x1='152' y1='40' x2='200' y2='40' fill='none' stroke='%23d5c4a1' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/><line x1='208' y1='88' x2='240' y2='88' fill='none' stroke='%23d5c4a1' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/></svg>") !important;
+}
+
+#WI-SP-button .drawer-icon::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M128 24a104 104 0 1 0 104 104A104.12 104.12 0 0 0 128 24m88 104a87.6 87.6 0 0 1-3.33 24h-38.51a157.4 157.4 0 0 0 0-48h38.51a87.6 87.6 0 0 1 3.33 24m-114 40h52a115.1 115.1 0 0 1-26 45a115.3 115.3 0 0 1-26-45m-3.9-16a140.8 140.8 0 0 1 0-48h59.88a140.8 140.8 0 0 1 0 48ZM40 128a87.6 87.6 0 0 1 3.33-24h38.51a157.4 157.4 0 0 0 0 48H43.33A87.6 87.6 0 0 1 40 128m114-40h-52a115.1 115.1 0 0 1 26-45a115.3 115.3 0 0 1 26 45m52.33 0h-35.62a135.3 135.3 0 0 0-22.3-45.6A88.29 88.29 0 0 1 206.37 88Zm-98.74-45.6A135.3 135.3 0 0 0 85.29 88H49.63a88.29 88.29 0 0 1 57.96-45.6M49.63 168h35.66a135.3 135.3 0 0 0 22.3 45.6A88.29 88.29 0 0 1 49.63 168m98.78 45.6a135.3 135.3 0 0 0 22.3-45.6h35.66a88.29 88.29 0 0 1-57.96 45.6'/></svg>") !important;
+}
+
+#user-settings-button .drawer-icon::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M144 157.68a68 68 0 1 0-71.9 0c-20.65 6.76-39.23 19.39-54.17 37.17a8 8 0 1 0 12.24 10.3C50.25 181.19 77.91 168 108 168s57.75 13.19 77.87 37.15a8 8 0 0 0 12.26-10.3c-14.95-17.78-33.53-30.41-54.13-37.17M56 100a52 52 0 1 1 52 52a52.06 52.06 0 0 1-52-52m196.25 43.07l-4.66-2.69a23.6 23.6 0 0 0 0-8.76l4.66-2.69a8 8 0 1 0-8-13.86l-4.67 2.7a23.9 23.9 0 0 0-7.58-4.39V108a8 8 0 0 0-16 0v5.38a23.9 23.9 0 0 0-7.58 4.39l-4.67-2.7a8 8 0 1 0-8 13.86l4.66 2.69a23.6 23.6 0 0 0 0 8.76l-4.66 2.69a8 8 0 0 0 8 13.86l4.67-2.7a23.9 23.9 0 0 0 7.58 4.39V164a8 8 0 0 0 16 0v-5.38a23.9 23.9 0 0 0 7.58-4.39l4.67 2.7a7.9 7.9 0 0 0 4 1.07a8 8 0 0 0 4-14.93M216 136a8 8 0 1 1 8 8a8 8 0 0 1-8-8'/></svg>") !important;
+}
+
+#backgrounds-button .drawer-icon::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M216 40H40a16 16 0 0 0-16 16v144a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a16 16 0 0 0-16-16m0 16v102.75l-26.07-26.06a16 16 0 0 0-22.63 0l-20 20l-44-44a16 16 0 0 0-22.62 0L40 149.37V56ZM40 172l52-52l80 80H40Zm176 28h-21.37l-36-36l20-20L216 181.38zm-72-100a12 12 0 1 1 12 12a12 12 0 0 1-12-12'/></svg>") !important;
+}
+
+#extensions-settings-button .drawer-icon::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M104 40H56a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16V56a16 16 0 0 0-16-16m0 64H56V56h48zm96-64h-48a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16V56a16 16 0 0 0-16-16m0 64h-48V56h48zm-96 32H56a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16v-48a16 16 0 0 0-16-16m0 64H56v-48h48zm96-64h-48a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16v-48a16 16 0 0 0-16-16m0 64h-48v-48h48z'/></svg>") !important;
+}
+
+#persona-management-button .drawer-icon::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88M80 108a12 12 0 1 1 12 12a12 12 0 0 1-12-12m96 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12m-1.07 48c-10.29 17.79-27.4 28-46.93 28s-36.63-10.2-46.92-28a8 8 0 1 1 13.84-8c7.47 12.91 19.21 20 33.08 20s25.61-7.1 33.07-20a8 8 0 0 1 13.86 8'/></svg>") !important;
+}
+
+#rightNavHolder .drawer-icon::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M244.8 150.4a8 8 0 0 1-11.2-1.6A51.6 51.6 0 0 0 192 128a8 8 0 0 1-7.37-4.89a8 8 0 0 1 0-6.22A8 8 0 0 1 192 112a24 24 0 1 0-23.24-30a8 8 0 1 1-15.5-4A40 40 0 1 1 219 117.51a67.94 67.94 0 0 1 27.43 21.68a8 8 0 0 1-1.63 11.21M190.92 212a8 8 0 1 1-13.84 8a57 57 0 0 0-98.16 0a8 8 0 1 1-13.84-8a72.06 72.06 0 0 1 33.74-29.92a48 48 0 1 1 58.36 0A72.06 72.06 0 0 1 190.92 212M128 176a32 32 0 1 0-32-32a32 32 0 0 0 32 32m-56-56a8 8 0 0 0-8-8a24 24 0 1 1 23.24-30a8 8 0 1 0 15.5-4A40 40 0 1 0 37 117.51a67.94 67.94 0 0 0-27.4 21.68a8 8 0 1 0 12.8 9.61A51.6 51.6 0 0 1 64 128a8 8 0 0 0 8-8'/></svg>") !important;
+}
+

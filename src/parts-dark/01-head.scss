@@ -1,0 +1,54 @@
+/* ============================================================
+ * #{$theme-name} — SillyTavern 主题
+ * Gruvbox 配色 × HarmonyOS Sans SC
+ * https://github.com/KronosXup/sillytavern-gruvbox-harmony
+ * ============================================================ */
+
+// ===== 头像双态取值: 模式0=电影大卡, 模式1=传统小圆 =====
+// 编译为运行时calc, 由 #chat 上的 --avatar-mode 变量切换(用户改JSON里那个数字)
+@function dual($m0, $m1) {
+  @return unquote("calc(#{$m0} * (1 - var(--avatar-mode)) + #{$m1} * var(--avatar-mode))");
+}
+
+/* ---FONTS--- */
+
+/* ===== 头像样式开关 ===== */
+/* 改下面的 --avatar-mode 数值切换头像样式:
+ *   0 = 电影大卡(顶部居中16:9大图+相框板+海报式信息行,默认)
+ *   1 = 传统小圆头像(左上圆形小头,名字/计数器下方)
+ * 改完需切换一次主题(切到别的再切回来)生效 */
+#chat {
+  --avatar-mode: 0;
+}
+
+/* ---全局字体（排除图标）--- */
+body {
+  background-color: transparent !important;
+  font-family: var(--font-sans);
+}
+/* 表单元素用主题字体；勿写 .menu_button（它常兼 FA 图标，会盖掉字形→Lite 图标消失） */
+input, textarea, select, option,
+button:not(.fa-solid):not(.fa-regular):not([class*="fa-"]),
+.select2-container, .select2-container .select2-selection,
+.text_pole, .widthNatural, #send_textarea, #dialogue_del_mes {
+  font-family: var(--font-sans) !important;
+}
+
+.mes_text,
+.mes_text p,
+.mes_text span,
+.ch_name,
+.mesIDDisplay,
+.mes_timer,
+.tokenCounterDisplay {
+  font-family: var(--font-sans);
+}
+
+/* 代码等宽 */
+code, pre, .hljs, .katex,
+.mes_text code, .mes_text pre,
+.mes_text .hljs, .mes_text .hljs span,
+pre code, pre code.hljs {
+  font-family: var(--font-mono) !important;
+}
+

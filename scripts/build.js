@@ -12,16 +12,25 @@ const ROOT = path.join(__dirname, '..');
 
 const GROUPS = {
   dark: {
-    template: '_base-dark.scss',
+    partsDir: 'parts-dark',
     themes: ['Gruvbox-Harmony-Blue', 'Gruvbox-Harmony-Green', 'Gruvbox-Harmony-Orange', 'Gruvbox-Harmony-Purple', 'Gruvbox-Harmony-Violet',
       'Gruvbox-Material-Blue', 'Gruvbox-Material-Green', 'Gruvbox-Material-Orange', 'Gruvbox-Material-Purple', 'Gruvbox-Material-Violet'],
   },
   light: {
-    template: '_base-light.scss',
+    partsDir: 'parts-light',
     themes: ['Gruvbox-Harmony-Blue-Light', 'Gruvbox-Harmony-Green-Light', 'Gruvbox-Harmony-Orange-Light', 'Gruvbox-Harmony-Purple-Light', 'Gruvbox-Harmony-Violet-Light',
       'Gruvbox-Material-Blue-Light', 'Gruvbox-Material-Green-Light', 'Gruvbox-Material-Orange-Light', 'Gruvbox-Material-Purple-Light', 'Gruvbox-Material-Violet-Light'],
   },
 };
+
+/* 模板已拆为分片(NN-名称.scss), 按文件名排序拼接成完整模板文本
+ * 拼接是纯文本连接, 编译输入与拆分前逐字节一致 */
+function loadTemplate(partsDir) {
+  const dir = path.join(ROOT, 'src', partsDir);
+  const files = fs.readdirSync(dir).filter(f => f.endsWith('.scss')).sort();
+  if (!files.length) throw new Error('分片目录为空: ' + partsDir);
+  return files.map(f => fs.readFileSync(path.join(dir, f), 'utf8').replace(/\r\n/g, '\n')).join('');
+}
 
 function themeJsonPath(name) {
   for (const d of ['themes/harmony', 'themes/light', 'themes/material']) {
@@ -46,8 +55,8 @@ const FONTS_DEFAULT = path.join(ROOT, 'src', '_fonts.scss');
 const usingLocalFonts = fs.existsSync(FONTS_LOCAL);
 const FONTS_BLOCK = fs.readFileSync(usingLocalFonts ? FONTS_LOCAL : FONTS_DEFAULT, 'utf8').replace(/\r\n/g, '\n').trim();
 if (usingLocalFonts) console.log('[字体] 使用本地自定义: src/_fonts-local.scss');
-function compileTheme(name, template) {
-  let src = fs.readFileSync(path.join(ROOT, 'src', template), 'utf8');
+function compileTheme(name, partsDir) {
+  let src = loadTemplate(partsDir);
   const attrs = [];
   src = src.replace(ATTR_RE, m => { attrs.push(m); return `__ATTRSEL${attrs.length - 1}__`; });
   src = src.replace(RGBA1_RE, m => { attrs.push(m); return `__ATTRSEL${attrs.length - 1}__`; });
@@ -174,7 +183,7 @@ for (const [gname, g] of Object.entries(GROUPS)) {
     process.stdout.write(`${name} ... `);
     let gen;
     try {
-      gen = compileTheme(name, g.template);
+      gen = compileTheme(name, g.partsDir);
     } catch (e) {
       console.log('编译失败:\n' + e.message.split('\n').slice(0, 6).join('\n'));
       fail++; continue;

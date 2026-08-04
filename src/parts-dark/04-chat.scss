@@ -1,0 +1,206 @@
+/* ============================================================
+ * 聊天区域
+ * ============================================================ */
+#sheld {
+  top: var(--topBarBlockSize);
+  height: calc(100dvh - var(--topBarBlockSize)) !important;
+  max-height: calc(100dvh - var(--topBarBlockSize)) !important;
+  bottom: 0 !important;
+}
+
+/* 输入栏贴底：干掉 ST 默认 margin 1px / 桌面端 margin-bottom 4px */
+#form_sheld {
+  margin: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#chat {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  align-items: stretch;
+  max-height: calc(100dvh - var(--topBarBlockSize) - 20px) !important;
+  padding: 8px 8px 8px 8px;
+  background-color: var(--SmartThemeChatTintColor);
+}
+
+.mesIDDisplay,
+.mes_timer,
+.tokenCounterDisplay {
+  display: block;
+  color: var(--SmartThemeEmColor);
+  font-size: calc(var(--mainFontSize) * 0.75);
+  opacity: 0.7;
+}
+
+#chat .ch_name {
+  position: relative;
+  align-items: flex-end;
+  padding: calc(var(--mainFontSize) * 0.8) 0;
+  font-weight: 500;
+}
+
+#chat .ch_name::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--SmartThemeEmColor);
+}
+
+.mes {
+  border: none !important;
+  background-color: var(--SmartThemeChatTintColor) !important;
+}
+
+.mes_text {
+  padding: calc(var(--mainFontSize) * 0.8) 0 0 0;
+  line-height: 1.8;
+}
+
+
+.last_mes .mes_text {
+  padding-right: 0;
+}
+
+.last_mes .mesAvatarWrapper {
+  padding-bottom: 0;
+}
+
+div[is_user="false"].last_mes .mes_block {
+  padding-bottom: 50px;
+}
+
+.last_mes .swipeRightBlock {
+  margin: 0 10px 0 0;
+}
+
+/* swipes-counter 与箭头视觉中线对齐（柱状布局下整体居中、counter 不再撑高） */
+.swipeRightBlock {
+  align-items: center !important;
+  justify-content: flex-end !important;
+}
+.swipes-counter {
+  height: auto !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 2px 5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+}
+.swipe_right {
+  align-self: center !important;
+}
+
+div[is_user="true"] {
+  background-color: var(--SmartThemeUserMesBlurTintColor) !important;
+}
+
+div[is_user="false"] {
+  background-color: var(--SmartThemeBotMesBlurTintColor) !important;
+}
+
+div[is_user="true"] .avatar img {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--SmartThemeUnderlineColor) 30%, transparent),
+    0 0 8px color-mix(in srgb, var(--SmartThemeUnderlineColor) 40%, transparent);
+}
+
+div[is_user="false"] .avatar img {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--SmartThemeQuoteColor) 30%, transparent),
+    0 0 8px color-mix(in srgb, var(--SmartThemeQuoteColor) 40%, transparent);
+}
+
+.swipe_left {
+  left: 12px;
+}
+
+.swipeRightBlock {
+  flex-direction: row-reverse;
+  bottom: calc(var(--swipeCounterHeight) + var(--swipeCounterMargin));
+}
+
+#chat .mes.selected {
+  background-color: rgba(204, 36, 29, 0.3) !important;
+}
+
+/* ---文档模式--- */
+body.documentstyle #chat .ch_name::after { width: 0; }
+body.documentstyle #chat .mes .mes_block { margin-right: 0; padding-bottom: 15px; }
+body.documentstyle #chat .last_mes .mes_block { padding-bottom: 50px; }
+body.documentstyle #chat .mes_text { margin-left: 0 !important; }
+
+/* ---视觉小说模式--- */
+body.waifuMode #chat {
+  border: none;
+  box-shadow: none;
+}
+body.waifuMode .zoomed_avatar { top: 70px; }
+
+/* ============================================================
+ * 推理块
+ * ============================================================ */
+.mes_reasoning_header {
+  margin: 1em 0;
+  padding: 7px 28px 7px 10px;
+  background: color-mix(in srgb, var(--SmartThemeQuoteColor) 20%, transparent);
+  border: 1px solid var(--SmartThemeQuoteColor);
+  border-radius: 4px;
+  color: var(--SmartThemeBodyColor);
+}
+
+.mes_reasoning_header span::before {
+  content: none;
+}
+
+.mes_reasoning {
+  border-left: 2px solid var(--SmartThemeQuoteColor);
+}
+
+/* ============================================================
+ * 底栏
+ * ============================================================ */
+#form_sheld {
+  margin: 0 auto;
+}
+
+#send_form {
+  background-color: var(--SmartThemeBlurTintColor) !important;
+  border: 1px solid var(--SmartThemeBorderColor) !important;
+  border-radius: 6px;
+  backdrop-filter: none;
+  padding: 4px 8px;
+  outline: none !important;
+}
+
+#send_form:focus,
+#send_form:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#send_form textarea {
+  background-color: transparent !important;
+}
+
+#send_form .fa-solid {
+  font-size: calc(var(--mainFontSize) * 1.5);
+}
+
+/* ---QR--- */
+#qr--bar > .qr--buttons .qr--button,
+#qr--popout > .qr--body > .qr--buttons .qr--button {
+  background-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 25%, transparent);
+  border-color: var(--SmartThemeQuoteColor) !important;
+  border-radius: 4px !important;
+}
+
+#qr--bar > .qr--buttons .qr--button:hover,
+#qr--popout > .qr--body > .qr--buttons .qr--button:hover {
+  background-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 45%, transparent) !important;
+}
+

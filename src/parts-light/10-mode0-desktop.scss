@@ -1,0 +1,343 @@
+/* PC端：头像底=分割线；计数器在名字与分割线之间上下等距；整体蒙版无接缝 */
+@media screen and (min-width: 1001px) {
+  #chat .mes {
+    position: relative !important;
+    display: block !important;
+    padding-left: 72px !important;
+    padding-right: #{unquote("calc(72px - 6px)")} !important; /* 补偿滚动条轨道 */
+    padding-top: 4px !important;
+    margin-bottom: 18px !important;
+    box-sizing: border-box !important;
+    --pc-avatar: 56px;
+    --pc-name-h: 1.2em;
+    --pc-chip-h: calc(var(--mainFontSize) * 0.78 * 1.3 + 6px);
+    --pc-gap: calc((var(--pc-avatar) - var(--pc-name-h) - var(--pc-chip-h)) / 2);
+  }
+  /* 角落分界(圆角)：右下角，收 66px 到正文右缘，last_mes 除外 */
+  #chat .mes:not(.last_mes)::after {
+    content: "" !important;
+    position: absolute !important;
+    width: 20px !important;
+    height: 20px !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    bottom: 0 !important;
+    right: #{unquote("calc(72px - 6px)")} !important;
+    opacity: dual("0", "1") !important; /* 大卡模式隐藏,传统模式保留 */
+    border-bottom: 1.5px solid var(--SmartThemeEmColor) !important;
+    border-right: 1.5px solid var(--SmartThemeEmColor) !important;
+    border-bottom-right-radius: 7px !important;
+  }
+  
+  .mesAvatarWrapper {
+    position: absolute !important;
+    left: 72px !important;
+    top: calc(4px + var(--pc-name-h) + var(--pc-gap) - 1px) !important;
+    right: auto !important;
+    width: max-content !important;
+    max-width: calc(100% - 96px) !important;
+    min-width: 0 !important;
+    height: var(--pc-chip-h) !important;
+    flex: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 0 !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
+    overflow: visible !important;
+  }
+  .mesAvatarWrapper .avatar {
+    position: absolute !important;
+    left: -64px !important;
+    top: calc(-1 * (var(--pc-name-h) + var(--pc-gap))) !important;
+    width: var(--pc-avatar) !important;
+    height: var(--pc-avatar) !important;
+    min-width: var(--pc-avatar) !important;
+    min-height: var(--pc-avatar) !important;
+    margin: 0 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+  }
+  .mesAvatarWrapper .avatar img {
+    width: var(--pc-avatar) !important;
+    height: var(--pc-avatar) !important;
+  }
+  .mesAvatarWrapper::after {
+    content: none !important;
+    display: none !important;
+  }
+  #chat .mes .mes_block {
+    display: block !important;
+    padding: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  #chat .mes .ch_name {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    height: var(--pc-avatar) !important;
+    min-height: var(--pc-avatar) !important;
+    max-height: var(--pc-avatar) !important;
+    padding: 0 !important;
+    margin: 0 0 10px 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+  #chat .mes .ch_name > .flex-container.flex1,
+  #chat .mes .ch_name > .flex1 {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 4em) !important;
+    display: flex !important;
+    align-items: center !important;
+    height: var(--pc-name-h) !important;
+  }
+  #chat .mes .ch_name .alignItemsBaseline {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    column-gap: 8px !important;
+    width: 100% !important;
+  }
+  #chat .mes .ch_name .name_text {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    line-height: var(--pc-name-h) !important;
+  }
+  #chat .mes .timestamp {
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+    font-size: calc(var(--mainFontSize) * 0.85) !important;
+    opacity: 0.8 !important;
+    line-height: 1.2 !important;
+  }
+  #chat .mes .timestamp-icon {
+    display: inline-block !important;
+    width: 1em !important;
+    height: 1em !important;
+    flex: 0 0 1em !important;
+    margin-left: 4px !important;
+    vertical-align: middle !important;
+  }
+  #chat .mes .timestamp-icon svg {
+    width: 1em !important;
+    height: 1em !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  #chat .mes .ch_name::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 1px !important;
+    width: 100% !important;
+    background-color: var(--SmartThemeEmColor) !important;
+    opacity: 0.35 !important;
+    z-index: 1 !important;
+  }
+  /* 整体蒙版：在 wrapper flex 内横排，无接缝、不重叠 */
+  #chat .mes .mesIDDisplay,
+  #chat .mes .mes_timer,
+  #chat .mes .tokenCounterDisplay {
+    position: static !important;
+    display: inline-block !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 0 !important;
+    padding: 2px 8px !important;
+    font-weight: 500 !important;
+    font-size: calc(var(--mainFontSize) * 0.78) !important;
+    opacity: 0.85 !important;
+    line-height: 1.3 !important;
+    white-space: nowrap !important;
+    max-width: none !important;
+    overflow: visible !important;
+    background: color-mix(in srgb, var(--SmartThemeBorderColor) 60%, transparent) !important;
+    border-radius: 0 !important;
+    z-index: 5 !important;
+    pointer-events: auto !important;
+    box-sizing: border-box !important;
+  }
+  #chat .mes .mesIDDisplay {
+    border-radius: 4px 0 0 4px !important;
+  }
+  #chat .mes .tokenCounterDisplay:not(:empty) {
+    border-radius: 0 4px 4px 0 !important;
+  }
+  #chat .mes .mes_timer:empty {
+    display: none !important;
+  }
+  #chat .mes .tokenCounterDisplay:empty {
+    display: none !important;
+  }
+  #chat .mes:has(.mes_timer:empty):has(.tokenCounterDisplay:empty) .mesIDDisplay {
+    border-radius: 4px !important;
+  }
+  #chat .mes:has(.mes_timer:empty) .tokenCounterDisplay:not(:empty) {
+    border-radius: 0 4px 4px 0 !important;
+  }
+  #chat .mes:has(.tokenCounterDisplay:empty) .mes_timer:not(:empty) {
+    border-radius: 0 4px 4px 0 !important;
+  }
+  #chat .mes .mes_text {
+    padding-top: calc(var(--mainFontSize) * 0.75) !important;
+    padding-bottom: 62px !important; /* 按钮排+swipe行留位，避免短消息时压正文 */
+  }
+  #chat .mes .mes_block {
+    position: relative !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+  }
+  #chat .mes .ch_name {
+    position: static !important;
+  }
+  body:not(.documentstyle) #chat .mes .ch_name {
+    border-bottom: 1px solid var(--SmartThemeEmColor) !important;
+  }
+  #chat .mes .ch_name::after {
+    display: none !important;
+  }
+  #chat .mes .ch_name .mes_buttons {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 6px !important;
+    right: calc(2px + 0.5em) !important;
+    left: auto !important;
+    z-index: 30 !important;
+  }
+  #chat .mes .mes_edit_buttons {
+    float: none !important;
+    position: absolute !important;
+    bottom: 6px !important;
+    right: calc(2px + 0.5em) !important;
+    margin: 0 !important;
+    z-index: 30 !important;
+  }
+  #chat .mes .mes_block:has(.edit_textarea) .ch_name .mes_buttons {
+    display: none !important;
+  }
+  #chat .mes .mes_text:has(.edit_textarea) {
+    padding-bottom: 64px !important;
+  }
+  #chat .mes .swipeRightBlock {
+    bottom: 6px !important;
+  }
+  #chat .mes .swipe_left {
+    bottom: 6px !important;
+  }
+  #chat .mes .mes_media_wrapper:not(:empty),
+  #chat .mes .mes_file_wrapper:not(:empty) {
+    padding-bottom: 36px !important;
+  }
+}
+/* 补漏图标: fa-scissors/fa-cut (ph:scissors, 拆分聊天) / fa-route (ph:path, 追踪激活来源) */
+.fa-scissors::before,
+.fa-cut::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M157.73,113.13A8,8,0,0,1,159.82,102L227.48,55.7a8,8,0,0,1,9,13.21l-67.67,46.3a7.92,7.92,0,0,1-4.51,1.4A8,8,0,0,1,157.73,113.13Zm80.87,85.09a8,8,0,0,1-11.12,2.08L136,137.7,93.49,166.78a36,36,0,1,1-9-13.19L121.83,128,84.44,102.41a35.86,35.86,0,1,1,9-13.19l143,97.87A8,8,0,0,1,238.6,198.22ZM80,180a20,20,0,1,0-5.86,14.14A19.85,19.85,0,0,0,80,180ZM74.14,90.13a20,20,0,1,0-28.28,0A19.85,19.85,0,0,0,74.14,90.13Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-route::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M200,168a32.06,32.06,0,0,0-31,24H72a32,32,0,0,1,0-64h96a40,40,0,0,0,0-80H72a8,8,0,0,0,0,16h96a24,24,0,0,1,0,48H72a48,48,0,0,0,0,96h97a32,32,0,1,0,31-40Zm0,48a16,16,0,1,1,16-16A16,16,0,0,1,200,216Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* fa-robot -> Phosphor CPU 芯片风格 */
+.fa-robot::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect x='80' y='80' width='96' height='96' rx='12' fill='none' stroke='%23#{$icon-color}' stroke-width='16'/><rect x='112' y='112' width='32' height='32' rx='4' fill='%23#{$icon-color}'/><line x1='128' y1='48' x2='128' y2='80' stroke='%23#{$icon-color}' stroke-width='16' stroke-linecap='round'/><line x1='48' y1='128' x2='80' y2='128' stroke='%23#{$icon-color}' stroke-width='16' stroke-linecap='round'/><line x1='176' y1='128' x2='208' y2='128' stroke='%23#{$icon-color}' stroke-width='16' stroke-linecap='round'/><line x1='128' y1='176' x2='128' y2='208' stroke='%23#{$icon-color}' stroke-width='16' stroke-linecap='round'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* 删除消息模式：勾选框绝对定位，不挤压名字/计数器布局 */
+.mes .for_checkbox {
+  position: absolute !important;
+  top: 6px !important;
+  right: 6px !important;
+  width: auto !important;
+  height: auto !important;
+  z-index: 30 !important;
+  pointer-events: none !important;
+}
+.mes input[type="checkbox"].del_checkbox {
+  position: absolute !important;
+  top: 6px !important;
+  right: 6px !important;
+  margin: 0 !important;
+  z-index: 31 !important;
+  pointer-events: auto !important;
+}
+
+/* h3/h4 标题统一背景色/字号(与 drawer 内一致) */
+h3.margin0,
+h4.margin0,
+.popup h3:not(dialog *) {
+  background-color: color-mix(in srgb, var(--SmartThemeBorderColor) 60%, var(--SmartThemeBlurTintColor)) !important;
+  font-size: calc(var(--mainFontSize) * 1.15) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+  line-height: 2 !important;
+}
+
+/* 用户人设/角色选中边框：只 Quote 色边,去光晕 */
+.avatar-container.selected {
+  border-color: var(--SmartThemeQuoteColor) !important;
+  box-shadow: none !important;
+}
+/* 默认人设:圆角外框改主题Quote色 */
+.avatar-container.default_persona .avatar {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--SmartThemeQuoteColor) !important;
+}
+.avatar-container.default_persona .avatar img {
+  border-radius: inherit !important;
+}
+.bogus_folder_select:hover,
+.character_select:hover,
+.avatar-container:hover {
+  background-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 15%, transparent) !important;
+}
+
+/* is_fav 收藏头像:圆角外框改主题Quote色 */
+.character_select.is_fav .avatar,
+.group_select.is_fav .avatar,
+.group_member.is_fav .avatar,
+.avatar.is_fav {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--SmartThemeQuoteColor) !important;
+}
+/* 收藏名字用主题 Quote 色 */
+.character_select.is_fav .ch_name,
+.group_select.is_fav .ch_name,
+.group_member.is_fav .ch_name {
+  color: var(--SmartThemeQuoteColor) !important;
+}
+

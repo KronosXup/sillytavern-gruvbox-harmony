@@ -1,0 +1,150 @@
+/* ============================================================
+ * 标题下横线
+ * ============================================================ */
+.standoutHeader:not(h4),
+#rm_PinAndTabs,
+#top-settings-holder .drawer:not(:first-child):not(:last-child) .drawer-content .alignItemsBaseline.wide100p,
+#rm_api_block .flex-container.alignItemsBaseline,
+#title_api,
+#AdvancedFormatting .flex-container.alignItemsBaseline:not(h3),
+#WorldInfo .alignitemscenter:not(#world_popup *),
+#Backgrounds .bg-header-row-1,
+#user-settings-block div[name="userSettingsRowOne"],
+#rm_extensions_block .alignitemscenter.flex-container.wide100p:not(.justifyCenter) {
+  background-image: none;
+  border: none;
+  border-bottom: 1px solid var(--SmartThemeBorderColor);
+  margin-bottom: calc(var(--mainFontSize) * 0.4);
+  padding-bottom: calc(var(--mainFontSize) * 0.2);
+}
+
+.drawer-content .alignItemsBaseline {
+  align-items: center !important;
+}
+
+#title_api {
+  padding-bottom: 0;
+}
+
+#title_api::before,
+#Backgrounds h3.margin0.flex2::before,
+#rm_extensions_block .margin0.flex1::before,
+#rm_button_selected_ch h2::before {
+  margin-right: 5px;
+}
+
+.custom-mermaid {
+  background-color: var(--SmartThemeShadowColor);
+}
+
+.standoutHeader.inline-drawer-header {
+  padding: 5px 8px 5px 12px !important;
+}
+
+/* ============================================================
+ * 补回丢失的UI元素
+ * ============================================================ */
+
+/* ---世界书条目分割线--- */
+.world_entry {
+  border-bottom: 1px solid var(--SmartThemeBorderColor) !important;
+  padding-bottom: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.world_entry:last-child {
+  border-bottom: none !important;
+}
+
+/* ---输入框边框--- */
+#send_form {
+  border: 1px solid var(--SmartThemeBorderColor) !important;
+}
+
+#send_textarea {
+  border: none !important;
+  border-bottom: 3px solid var(--SmartThemeQuoteColor) !important;
+  border-radius: 0 !important;
+  padding: 4px 10px !important;
+  min-height: 32px !important;
+  font-size: calc(var(--mainFontSize) * 1.05) !important;
+  outline: none !important;
+}
+
+#send_textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ---抽屉内部分割线--- */
+.drawer-content .inline-drawer {
+  border-bottom: none;
+}
+
+/* ---提示词管理器条目边框--- */
+#completion_prompt_manager #completion_prompt_manager_list li.completion_prompt_manager_prompt {
+  border: 1px solid var(--SmartThemeBorderColor) !important;
+}
+
+/* ---角色列表条目分割线--- */
+.character_select {
+  border-bottom: 1px solid var(--SmartThemeBorderColor);
+}
+
+/* ---面板内分割线--- */
+#right-nav-panel hr,
+#left-nav-panel hr {
+  border: none;
+  border-top: 1px solid var(--SmartThemeBorderColor);
+  margin: 8px 0;
+}
+
+/* ---设置区块分割--- */
+#user-settings-block .setting_section {
+  border-bottom: 1px solid var(--SmartThemeBorderColor);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+ * 背景层 - v3.1 新增
+ * body 底色 + #chat 透明 + 暗纹叠加
+ * ============================================================ */
+
+body {
+  background-color: #{$bg-light} !important;
+}
+
+/* 全屏暗色遮罩（聊天区域外） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(249, 245, 215, 0.92);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 暗纹叠加层（在遮罩之上，聊天区之下） */
+body::after {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 70px),
+    repeating-linear-gradient(-45deg, transparent, transparent 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 70px) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* #chat 用 JSON 字段的 chat_tint_color（已改为 0.75 透明） */
+/* 消息背景透明，让 chat_tint 透过来 */
+.mes {
+  background-color: transparent !important;
+}
+
+div[is_user="true"],
+div[is_user="false"] {
+  background-color: transparent !important;
+}
+

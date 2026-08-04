@@ -1,0 +1,281 @@
+/* ===== 修神经滑条帽子形状:ST默认border-radius 7px 7px 0 0只有上圆角 ===== */
+.neo-range-slider {
+  border-radius: 7px !important;
+}
+
+/* 补漏图标: fa-pen-ruler (ph:pencil-ruler) */
+.fa-pen-ruler::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M208 32h-48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16m0 176h-48v-32h24a8 8 0 0 0 0-16h-24v-24h24a8 8 0 0 0 0-16h-24V96h24a8 8 0 0 0 0-16h-24V48h48zM77.66 26.34a8 8 0 0 0-11.32 0l-32 32A8 8 0 0 0 32 64v144a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16V64a8 8 0 0 0-2.34-5.66ZM48 176V80h16v96Zm32-96h16v96H80Zm-8-36.69L92.69 64H51.31ZM48 208v-16h48v16Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* ===== 双滑块圆球被青条盖住修复 ===== */
+/* ST给range加filter:brightness形成stacking context,thumb的z-index:2无法逃逸到容器::after青条之上; */
+/* 去掉doubleRange内input的filter(含hover),恢复圆球在青条上方 */
+.doubleRangeInputContainer > input[type="range"],
+.doubleRangeInputContainer > input[type="range"]:hover {
+  filter: none !important;
+}
+
+/* ===== 补漏图标批次(提示词管理器/群聊/SD/酒馆助手/hide-helper) ===== */
+.fa-plus-square::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22M208 32H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16m0 176H48V48h160zm-32-80a8 8 0 0 1-8 8h-32v32a8 8 0 0 1-16 0v-32H88a8 8 0 0 1 0-16h32V88a8 8 0 0 1 16 0v32h32a8 8 0 0 1 8 8%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-asterisk::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22M214.86 180.12a8 8 0 0 1-11 2.74L136 142.13V216a8 8 0 0 1-16 0v-73.87l-67.88 40.73a8 8 0 1 1-8.23-13.72L112.45 128L43.89 86.86a8 8 0 1 1 8.23-13.72L120 113.87V40a8 8 0 0 1 16 0v73.87l67.88-40.73a8 8 0 1 1 8.23 13.72L143.55 128l68.56 41.14a8 8 0 0 1 2.75 10.98%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-share-from-square::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22m229.66 109.66l-48 48a8 8 0 0 1-11.32-11.32L204.69 112H165a88 88 0 0 0-85.23 66a8 8 0 0 1-15.5-4A103.94 103.94 0 0 1 165 96h39.71l-34.37-34.34a8 8 0 0 1 11.32-11.32l48 48a8 8 0 0 1 0 11.32M192 208H40V88a8 8 0 0 0-16 0v128a8 8 0 0 0 8 8h160a8 8 0 0 0 0-16%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-external-link::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22M224 104a8 8 0 0 1-16 0V59.32l-66.33 66.34a8 8 0 0 1-11.32-11.32L196.68 48H152a8 8 0 0 1 0-16h64a8 8 0 0 1 8 8Zm-40 24a8 8 0 0 0-8 8v72H48V80h72a8 8 0 0 0 0-16H48a16 16 0 0 0-16 16v128a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-72a8 8 0 0 0-8-8%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-check-to-slot::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22M173.66 98.34a8 8 0 0 1 0 11.32l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 0M224 48v160a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h160a16 16 0 0 1 16 16m-16 160V48H48v160z%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-user-graduate::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22m226.53 56.41l-96-32a8 8 0 0 0-5.06 0l-96 32A8 8 0 0 0 24 64v80a8 8 0 0 0 16 0V75.1l33.59 11.19a64 64 0 0 0 20.65 88.05c-18 7.06-33.56 19.83-44.94 37.29a8 8 0 1 0 13.4 8.74C77.77 197.25 101.57 184 128 184s50.23 13.25 65.3 36.37a8 8 0 0 0 13.4-8.74c-11.38-17.46-27-30.23-44.94-37.29a64 64 0 0 0 20.65-88l44.12-14.7a8 8 0 0 0 0-15.18ZM176 120a48 48 0 1 1-86.65-28.45l36.12 12a8 8 0 0 0 5.06 0l36.12-12A47.9 47.9 0 0 1 176 120m-48-32.43L57.3 64L128 40.43L198.7 64Z%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-comment-slash::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22M53.92 34.62a8 8 0 1 0-11.84 10.76L44.46 48H40a16 16 0 0 0-16 16v160a15.85 15.85 0 0 0 9.24 14.5A16.1 16.1 0 0 0 40 240a15.94 15.94 0 0 0 10.26-3.78l.08-.07L83 208h106.92l12.16 13.38a8 8 0 1 0 11.84-10.76ZM80 192a8 8 0 0 0-5.23 1.95L40 224V64h19l116.37 128ZM232 64v122a8 8 0 0 1-16 0V64H105.79a8 8 0 0 1 0-16H216a16 16 0 0 1 16 16%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-comment::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22M128 24a104 104 0 0 0-91.82 152.88l-11.35 34.05a16 16 0 0 0 20.24 20.24l34.05-11.35A104 104 0 1 0 128 24m0 192a87.87 87.87 0 0 1-44.06-11.81a8 8 0 0 0-6.54-.67L40 216l12.47-37.4a8 8 0 0 0-.66-6.54A88 88 0 1 1 128 216%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-sun::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22M120 40V16a8 8 0 0 1 16 0v24a8 8 0 0 1-16 0m72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64m-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48M58.34 69.66a8 8 0 0 0 11.32-11.32l-16-16a8 8 0 0 0-11.32 11.32Zm0 116.68l-16 16a8 8 0 0 0 11.32 11.32l16-16a8 8 0 0 0-11.32-11.32M192 72a8 8 0 0 0 5.66-2.34l16-16a8 8 0 0 0-11.32-11.32l-16 16A8 8 0 0 0 192 72m5.66 114.34a8 8 0 0 0-11.32 11.32l16 16a8 8 0 0 0 11.32-11.32ZM48 128a8 8 0 0 0-8-8H16a8 8 0 0 0 0 16h24a8 8 0 0 0 8-8m80 80a8 8 0 0 0-8 8v24a8 8 0 0 0 16 0v-24a8 8 0 0 0-8-8m112-88h-24a8 8 0 0 0 0 16h24a8 8 0 0 0 0-16%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-shield-halved::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22M208 40H48a16 16 0 0 0-16 16v56c0 52.72 25.52 84.67 46.93 102.19c23.06 18.86 46 25.27 47 25.53a8 8 0 0 0 4.2 0c1-.26 23.91-6.67 47-25.53C198.48 196.67 224 164.72 224 112V56a16 16 0 0 0-16-16m0 16v56c0 2.71-.08 5.37-.23 8H136V56ZM48 56h72v64H48.23c-.15-2.63-.23-5.29-.23-8Zm2.06 80H120v84.55a131 131 0 0 1-30.93-18.74c-21.15-17.3-34.2-39.37-38.99-65.81Zm117.34 65.42a131.3 131.3 0 0 1-31.4 19.11V136h69.91c-4.75 26.24-17.64 48.18-38.51 65.42%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-markdown::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221em%22 height=%221em%22 viewBox=%220 0 256 256%22><path fill=%22%23d5c4a1%22 d=%22M232 48H24A16 16 0 0 0 8 64v128a16 16 0 0 0 16 16h208a16 16 0 0 0 16-16V64a16 16 0 0 0-16-16m0 144H24V64h208zm-104-88v48a8 8 0 0 1-16 0v-28.69l-18.34 18.35a8 8 0 0 1-11.32 0L64 123.31V152a8 8 0 0 1-16 0v-48a8 8 0 0 1 13.66-5.66L88 124.69l26.34-26.35A8 8 0 0 1 128 104m77.66 18.34a8 8 0 0 1 0 11.32l-24 24a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L168 132.69V104a8 8 0 0 1 16 0v28.69l10.34-10.35a8 8 0 0 1 11.32 0%22/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.fa-thumb-tack::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='m235.32 81.37l-60.69-60.68a16 16 0 0 0-22.63 0l-53.63 53.8c-10.66-3.34-35-7.37-60.4 13.14a16 16 0 0 0-1.29 23.78L85 159.71l-42.66 42.63a8 8 0 0 0 11.32 11.32L96.29 171l48.29 48.29A16 16 0 0 0 155.9 224h1.13a15.93 15.93 0 0 0 11.64-6.33c19.64-26.1 17.75-47.32 13.19-60L235.33 104a16 16 0 0 0-.01-22.63M224 92.69l-57.27 57.46a8 8 0 0 0-1.49 9.22c9.46 18.93-1.8 38.59-9.34 48.62L48 100.08c12.08-9.74 23.64-12.31 32.48-12.31A40.1 40.1 0 0 1 96.81 91a8 8 0 0 0 9.25-1.51L163.32 32L224 92.68Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* ===== select箭头主题色 ===== */
+/* ST的down-arrow.svg固定灰#888888与主题脱节,同形polygon换主题色 */
+select {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='7'><polygon points='0,0 10,0 5,7' fill='%23d5c4a1'/></svg>") !important;
+}
+
+/* ===== 品牌logo实测光学对齐 ===== */
+/* Phosphor logo字形撑得比圆框图标满(实测bbox: 问号208/github216/discord240,基准256): */
+/* 按测量比例缩放,与圆框问号同光学尺寸 */
+.fa-brands.fa-github::before {
+  background-size: 96% 96% !important;
+}
+.fa-brands.fa-discord::before {
+  background-size: 87% 87% !important;
+}
+
+/* ===== 提示词控制图标实色 ===== */
+/* ST给条目右侧控制图标(触发/编辑/开关)写死opacity:0.4+黑色drop-shadow,激活未激活一样淡; */
+/* 激活行改实色如正文,未激活行保持ST原有的淡化区分 */
+#completion_prompt_manager #completion_prompt_manager_list li.completion_prompt_manager_prompt:not(.completion_prompt_manager_prompt_disabled) span span span {
+  opacity: 1;
+  filter: none;
+}
+
+/* ===== 滑块提示条置顶 ===== */
+/* ST把提示条absolute钉在面板顶但z-auto,滚动时被按钮排等浮层内容压到底下; */
+/* 提层级但不补底色(用户要求),pointer-events穿透保证右上问号可点可见 */
+.editable-slider-notification {
+  z-index: 20;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+/* ===== 颜色选择器圆角 ===== */
+/* toolcool-color-picker按钮在shadow DOM内,走组件暴露的官方CSS变量 */
+toolcool-color-picker {
+  --tool-cool-color-picker-btn-border-radius: 4px;
+  --tool-cool-color-picker-btn-border-radius-inner: 3px;
+}
+
+/* ===== datalist输入框去三角 ===== */
+/* 带建议列表的打字框(如自定模型名)被浏览器画了下拉三角,冒充选择框:去掉 */
+/* Chrome 135+新解剖 */
+input[list]::picker-icon {
+  display: none !important;
+}
+/* 旧版Chromium(选择器分开写,合并会整条被弃) */
+input[list]::-webkit-calendar-picker-indicator {
+  display: none !important;
+}
+
+/* ===== 桌面端下拉弹层主题化(base-select) ===== */
+/* 仅鼠标设备+Chrome/Edge 135+生效:弹层改为CSS渲染,圆角/配色/选中行可控; */
+/* 手机平板保持原生底部选择面板;Firefox/Safari/旧版浏览器整段无效,保持原生弹层 */
+@media (hover: hover) and (pointer: fine) {
+  select,
+  ::picker(select) {
+    appearance: base-select;
+  }
+  ::picker(select) {
+    background-color: var(--SmartThemeBlurTintColor);
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 6px;
+    padding: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  }
+  /* 行圆角/内边距:不能写::picker(select) option(伪元素禁带后代整条会被弃),直接选option */
+  select option {
+    border-radius: 4px;
+    padding: 4px 8px;
+  }
+  /* ST用background-image自画箭头,再叠Chrome的picker-icon成双箭头:隐藏后者保留原箭头 */
+  select::picker-icon {
+    display: none;
+  }
+  .th-modern-wi-toolbar select {
+    padding-right: 1.5em !important;
+    align-items: center !important;
+  }
+  /* 状态拆分:当前值靠✓标记不上底色;高亮只给悬停/键盘焦点(focus-visible防鼠标点开幻影);disabled降透明 */
+  select option:checked,
+  select option:disabled {
+    color: var(--SmartThemeBodyColor) !important;
+    background-color: transparent !important;
+  }
+  select option:disabled {
+    opacity: 0.6;
+  }
+  select option:hover,
+  select option:focus-visible {
+    color: var(--SmartThemeBodyColor) !important;
+    background-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 18%, transparent) !important;
+  }
+}
+
+/* ===== 问号帮助链接置顶 ===== */
+/* .topRightInset绝对定位但z-auto,和滑块提示条同病:被滚动内容的按钮排盖住;提到提示条(z20)之上保持可点 */
+.topRightInset {
+  z-index: 21;
+}
+
+/* modern-ui 侧边工具栏胶囊:竖排首顶圆/末底圆/中间方,覆盖纯ST横排的首左圆/末右圆规则(漏到竖排错位);body.th-modern-enabled限定 */
+body.th-modern-enabled #top-settings-holder > .drawer,
+body.th-modern-enabled #top-settings-holder > .drawer > .drawer-toggle { border-radius: 0 !important; }
+body.th-modern-enabled #top-settings-holder > .drawer:first-child,
+body.th-modern-enabled #top-settings-holder > .drawer:first-child > .drawer-toggle { border-radius: 7px 7px 0 0 !important; }
+body.th-modern-enabled #top-settings-holder > .drawer:last-child,
+body.th-modern-enabled #top-settings-holder > .drawer:last-child > .drawer-toggle { border-radius: 0 0 7px 7px !important; }
+/* 胶囊续:toggle 去掉原生 1px 纵向 margin,撑满 drawer,免激活态高亮上下露奶油色 drawer 底色 */
+body.th-modern-enabled #top-settings-holder > .drawer > .drawer-toggle { margin: 0 !important; }
+
+/* modern-ui API 面板 listbox(#main_api/#chat_completion_source/#textgen_type,size>1)option 胶囊:首行顶圆/末行底圆/中间方,免连续圆角行堆叠丑 */
+body.th-modern-enabled #rm_api_block select[size] option { border-radius: 0 !important; }
+body.th-modern-enabled #rm_api_block select[size] > option:first-child,
+body.th-modern-enabled #rm_api_block select[size] > optgroup:first-child > option:first-child { border-radius: 5px 5px 0 0 !important; }
+body.th-modern-enabled #rm_api_block select[size] > option:last-child,
+body.th-modern-enabled #rm_api_block select[size] > optgroup:last-child > option:last-child { border-radius: 0 0 5px 5px !important; }
+/* listbox(size>1)去掉 select 自画的下拉三角 background-image:下拉框(size=1)需要箭头,listbox 不该有;纯ST不动 */
+body.th-modern-enabled #rm_api_block select[size] { background-image: none !important; }
+
+/* modern-ui 侧栏最近聊天折叠钮:hover 圆角化(原方角);箭头去掉自带 hover(整条已 hover,箭头再来一层冗余) */
+body.th-modern-enabled.th-modern-two-column .th-modern-recent-toggle { border-radius: var(--th-modern-radius-sm) !important; }
+body.th-modern-enabled.th-modern-two-column .th-modern-recent-toggle .th-modern-recent-collapse:hover { background-color: transparent !important; }
+
+/* modern-ui 侧栏整体方角改圆:侧栏 #th-modern-sidebar 与列表 .th-modern-recent-list 各带 box-shadow(投在奶油底上可见),原都方角,都圆 */
+body.th-modern-enabled.th-modern-two-column #th-modern-sidebar { border-radius: var(--th-modern-radius-sm) !important; }
+body.th-modern-enabled.th-modern-two-column .th-modern-recent-list { border-radius: var(--th-modern-radius-sm) !important; }
+
+/* 收尾:AI面板问号链接 .topRightInset 右移避开标题栏 fullscreen/close 按钮(原 right:23px 与按钮重叠) */
+body.th-modern-enabled .topRightInset { right: 80px !important; }
+
+/* select 箭头 no-repeat/position 移到顶层(原在 @media (hover:hover) and (pointer:fine) 里,手机触屏不匹配导致铺满倒三角):现在桌面/手机/纯ST 通用 */
+select { background-repeat: no-repeat !important; background-position: right 0.5em center !important; }
+

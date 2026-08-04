@@ -1,0 +1,254 @@
+/* ============================================================
+ * 顶栏
+ * ============================================================ */
+#top-bar {
+  background-color: transparent !important;
+  box-shadow: 0 1px 0 var(--SmartThemeBorderColor);
+}
+
+#top-settings-holder {
+  box-shadow: 0 1px 0 var(--SmartThemeQuoteColor);
+}
+
+.drawer {
+  background-color: var(--SmartThemeBorderColor);
+}
+
+.drawer:has(.openDrawer) {
+  background-color: var(--SmartThemeBlurTintColor);
+}
+
+.drawer-content {
+  background-color: var(--SmartThemeBlurTintColor);
+  border-radius: 6px;
+  box-shadow: 0 1px 0 var(--SmartThemeQuoteColor);
+  border: 1px solid var(--SmartThemeBorderColor);
+}
+
+.drawer-icon {
+  opacity: 0.5;
+}
+
+.drawer-icon:hover,
+.drawer-icon.openIcon {
+  opacity: 1;
+}
+
+/* ---抽屉标题--- */
+.inline-drawer-header,
+#top-settings-holder h4:not(#ai-config-button *):not(#rightNavHolder *),
+.drawer-content h4.margin0 {
+  border: 1px solid var(--SmartThemeBorderColor) !important;
+  border-left: 3px solid var(--SmartThemeQuoteColor) !important;
+  border-radius: 4px !important;
+  background-image: none !important;
+  background-color: color-mix(in srgb, var(--SmartThemeBorderColor) 60%, var(--SmartThemeBlurTintColor)) !important;
+  padding: 4px 8px 4px 12px !important;
+  margin-bottom: 4px !important;
+}
+/* 统一：关掉扩展菜单 h4/standoutHeader 的 ST 默认 brightness(150%) hover */
+#extensions_settings .inline-drawer-toggle.inline-drawer-header:hover,
+#extensions_settings2 .inline-drawer-toggle.inline-drawer-header:hover,
+#user-settings-block h4:hover,
+.standoutHeader.inline-drawer-header:hover,
+.standoutHeader:hover {
+  filter: none !important;
+}
+
+.inline-drawer-icon {
+  font-size: var(--mainFontSize);
+}
+
+/* ---标题--- */
+.standoutHeader strong,
+#right-nav-panel h2,
+.drawer-content h3.margin0,
+.drawer-content h4.margin0,
+.popup h3:not(dialog *) {
+  font-size: calc(var(--mainFontSize) * 1.15);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 2;
+}
+
+.standoutHeader strong::before,
+#right-nav-panel h2::before,
+.drawer-content h3.margin0::before,
+.drawer-content h4.margin0::before,
+.popup h3:not(dialog *)::before {
+  content: none;
+}
+
+/* ============================================================
+ * 输入框
+ * ============================================================ */
+input[type="text"],
+input[type="number"],
+input:not([type]),
+textarea:not([type="search"]) {
+  background-color: var(--SmartThemeShadowColor) !important;
+  border: 1px solid var(--SmartThemeBorderColor) !important;
+  border-radius: 4px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input:not([type]):focus,
+textarea:not([type="search"]):focus {
+  border-color: var(--SmartThemeQuoteColor) !important;
+}
+
+textarea[type="search"] {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.text_pole {
+  background-color: var(--SmartThemeShadowColor);
+  border: 1px solid var(--SmartThemeBorderColor);
+  border-radius: 4px;
+}
+
+/* ============================================================
+ * 按钮
+ * ============================================================ */
+.menu_button {
+  background-color: #{$bg-light};
+  border: 1px solid var(--SmartThemeBorderColor);
+  color: var(--SmartThemeBodyColor);
+  border-radius: 4px;
+}
+
+.menu_button:hover {
+  background-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 25%, var(--SmartThemeShadowColor));
+  border-color: var(--SmartThemeQuoteColor);
+}
+
+#delete_button,
+#dialogue_del_mes_ok,
+#dialogue_popup_ok,
+.redWarningBG,
+.red_button,
+.mes_edit_cancel.menu_button {
+  background-color: rgba(204, 36, 29, 1) !important;
+  color: #fff !important;
+}
+
+.mes_button,
+.mes_edit_buttons {
+  filter: none !important;
+}
+
+.fa-solid:not(#load-spinner) {
+  text-shadow: none !important;
+}
+
+/* ============================================================
+ * 下拉框
+ * ============================================================ */
+select {
+  background-color: var(--SmartThemeShadowColor) !important;
+  color: var(--SmartThemeBodyColor);
+  border: 1px solid var(--SmartThemeBorderColor) !important;
+  border-radius: 4px;
+  margin: 4px 0 !important;
+}
+
+/* Light: option 深字浅底；选中用 Quote 底+浅字 */
+select option {
+  color: var(--SmartThemeBodyColor) !important;
+  background-color: var(--SmartThemeBlurTintColor) !important;
+}
+select option:checked,
+select option:hover,
+select option:focus {
+  color: #{$bg-light} !important;
+  background-color: var(--SmartThemeQuoteColor) !important;
+}
+
+/* ============================================================
+ * 勾选框
+ * ============================================================ */
+input[type="checkbox"] {
+  width: calc(var(--mainFontSize) * 0.9);
+  height: calc(var(--mainFontSize) * 0.9);
+  border: none;
+  border-radius: 3px;
+  background-color: var(--SmartThemeShadowColor);
+  filter: none;
+  box-shadow: 0 0 0 1px var(--SmartThemeEmColor);
+}
+
+input[type="checkbox"]::before {
+  box-shadow: inset 1em 1em var(--SmartThemeQuoteColor);
+}
+
+/* ============================================================
+ * 滑动条
+ * ============================================================ */
+input[type="range"] {
+  background-color: var(--SmartThemeShadowColor) !important;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background-color: var(--SmartThemeQuoteColor);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--SmartThemeQuoteColor) 40%, transparent);
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+/* ============================================================
+ * 盒子/面板
+ * ============================================================ */
+#left-nav-panel,
+#right-nav-panel,
+#character_popup,
+#dialogue_popup,
+#chat,
+.draggable,
+#select_chat_popup,
+.popup:not(.transparent_dialogue_popup),
+.drawer-content {
+  padding: 10px;
+  background-color: var(--SmartThemeBlurTintColor);
+  border-radius: 6px;
+  border: 1px solid var(--SmartThemeBorderColor);
+}
+
+
+#dialogue_popup_text {
+  padding: 0 10px 0 0;
+}
+
+/* ---列表--- */
+.list-group,
+.options-content {
+  border: 1px solid var(--SmartThemeBorderColor);
+  border-radius: 5px;
+  background-color: var(--SmartThemeShadowColor) !important;
+}
+
+#options {
+  background-color: transparent !important;
+  padding: 0;
+}
+
+/* ---头像--- */
+.avatar img,
+body.big-avatars .avatar img {
+  box-shadow: none;
+  border: none;
+  border-radius: inherit;
+}
+
+#rm_button_characters,
+#rm_button_panel_pin_div,
+#lm_button_panel_pin_div,
+#WI_button_panel_pin_div,
+#char_connections_button {
+  font-size: var(--mainFontSize);
+}
+

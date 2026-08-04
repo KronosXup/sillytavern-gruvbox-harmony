@@ -1,0 +1,408 @@
+/* ============================================================
+ * 移动端适配
+ * ============================================================ */
+/* 移动端缩小头像，正文更宽 */
+@media screen and (max-width: 1000px) {
+  /* 手机端全部方角 */
+  #sheld, #chat, #send_form, #top-settings-holder,
+  #left-nav-panel, #right-nav-panel,
+  .drawer-content, .mes, #form_sheld {
+    border-radius: 0 !important;
+  }
+  /* 移动端 #chat：补背景色+纹理（ST默认关backdrop-filter，纹理和蒙版都丢失） */
+  #chat {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(29, 32, 33, 0.92) !important;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 70px),
+      repeating-linear-gradient(-45deg, transparent, transparent 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 70px) !important;
+  }
+  /* 删除模式输入栏：补背景色+纹理（与#chat一致，避免露底） */
+  #dialogue_del_mes,
+  #form_sheld {
+    background-color: rgba(29, 32, 33, 0.92) !important;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 70px),
+      repeating-linear-gradient(-45deg, transparent, transparent 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 35px, color-mix(in srgb, var(--SmartThemeQuoteColor) 0.8%, transparent) 70px) !important;
+    margin-top: 0 !important;
+  }
+  #dialogue_del_mes {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  #top-settings-holder,
+  #top-settings-holder .drawer,
+  #top-settings-holder .drawer-toggle,
+  #top-settings-holder .drawer:first-child,
+  #top-settings-holder .drawer:last-child,
+  #top-settings-holder .drawer:first-child .drawer-toggle,
+  #top-settings-holder .drawer:last-child .drawer-toggle {
+    border-radius: 0 !important;
+  }
+  
+  #left-nav-panel,
+  #right-nav-panel {
+    border-radius: 0 0 5px 5px;
+  }
+  .mes {
+    position: relative !important;
+    padding-top: 8px !important;
+    overflow: visible !important;
+  }
+  
+  .mesAvatarWrapper {
+    position: absolute !important;
+    top: 8px !important;
+    left: 4px !important;
+    right: 4px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    flex: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    align-content: flex-start !important;
+    gap: 0 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+  }
+  .mesAvatarWrapper .avatar {
+    position: absolute !important;
+    left: 0 !important;
+    /* 名字行约 1.3em + 间距 4px + 日期半高 0.6em - 头像半高 18px */
+    top: calc(1.3em + 4px + 0.6em - 18px) !important;
+    transform: none !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    margin: 0 !important;
+    flex: 0 0 36px !important;
+    pointer-events: auto !important;
+  }
+  .mesAvatarWrapper .avatar img {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .mesAvatarWrapper::after {
+    content: none !important;
+    display: none !important;
+  }
+  #chat .mes .mes_block {
+    width: 100% !important;
+    padding: 0 !important;
+    position: relative !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+  }
+  
+  #chat .mes .ch_name {
+    position: static !important;
+    padding: 0 3em 0 46px !important;
+    min-height: 0 !important;
+    margin: 0 0 28px 0 !important; 
+    display: block !important;
+    overflow: visible !important;
+  }
+  #chat .mes .ch_name > .flex-container.flex1,
+  #chat .mes .ch_name > .flex1 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: unset !important;
+  }
+  #chat .mes .ch_name .alignItemsBaseline {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    column-gap: 6px !important;
+    row-gap: 4px !important; /* 名字↔日期 */
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  #chat .mes .ch_name .name_text {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    display: block !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    line-height: 1.3 !important;
+  }
+  #chat .mes .ch_name .mes_ghost {
+    flex: 0 0 auto !important;
+  }
+  #chat .mes .timestamp {
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    opacity: 0.8 !important;
+    font-size: calc(var(--mainFontSize) * 0.78) !important;
+  }
+  #chat .mes .timestamp-icon {
+    display: inline-block !important;
+    width: 1em !important;
+    height: 1em !important;
+    flex: 0 0 1em !important;
+    margin: 0 0 0 4px !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+  }
+  #chat .mes .timestamp-icon,
+  #chat .mes .timestamp-icon svg {
+    width: 1em !important;
+    height: 1em !important;
+    max-width: 1em !important;
+    max-height: 1em !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+  #chat .mes .ch_name::after {
+    display: none !important;
+  }
+  #chat .mes .ch_name .mes_buttons {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 6px !important;
+    right: 0.5em !important;
+    left: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 4px !important;
+    overflow: visible !important;
+    z-index: 8 !important;
+  }
+  #chat .mes .ch_name .mes_buttons .extraMesButtons {
+    flex-wrap: wrap !important;
+    overflow: visible !important;
+    max-width: none !important;
+  }
+
+  #chat .mes .ch_name .mes_buttons .mes_button,
+  #chat .mes .ch_name .mes_buttons .extraMesButtons > div {
+    flex: 0 0 auto !important;
+    opacity: 0.8 !important;
+  }
+  
+  #chat .mes .mesIDDisplay,
+  #chat .mes .mes_timer,
+  #chat .mes .tokenCounterDisplay {
+    position: static !important;
+    display: inline-block !important;
+    order: 2 !important;
+    top: auto !important;
+    left: auto !important;
+    /* 顶距加大：日期行与计数器不再黏在一起 */
+    margin: calc(1.3em + 4px + 1.2em + 10px) 0 0 0 !important;
+    padding: 2px 8px !important;
+    font-size: calc(var(--mainFontSize) * 0.72) !important;
+    font-weight: 500 !important;
+    opacity: 0.85 !important;
+    line-height: 1.3 !important;
+    white-space: nowrap !important;
+    max-width: none !important;
+    overflow: visible !important;
+    background: color-mix(in srgb, var(--SmartThemeBorderColor) 60%, transparent) !important;
+    border-radius: 0 !important;
+    pointer-events: auto !important;
+    box-sizing: border-box !important;
+  }
+  #chat .mes .mesIDDisplay {
+    margin-left: 52px !important;
+    border-radius: 4px 0 0 4px !important;
+  }
+  /* 无日期/模型时(ACU选项等)：头像中线=操作中线；名字上、计数器下，到中线间距相等 */
+  #chat .mes:not(:has(.timestamp:not(:empty))) {
+    --nt-name-h: 1.3em;
+    --nt-gap: 6px;
+    --nt-mid: calc(var(--nt-name-h) + var(--nt-gap));
+    --nt-btn-half: 0.7em;
+  }
+  #chat .mes:not(:has(.timestamp:not(:empty))) .mesAvatarWrapper .avatar {
+    top: calc(var(--nt-mid) - 18px) !important;
+  }
+  #chat .mes:not(:has(.timestamp:not(:empty))) .ch_name .mes_buttons {
+    top: auto !important;
+  }
+  #chat .mes:not(:has(.timestamp:not(:empty))) .mesIDDisplay,
+  #chat .mes:not(:has(.timestamp:not(:empty))) .mes_timer,
+  #chat .mes:not(:has(.timestamp:not(:empty))) .tokenCounterDisplay {
+    margin-top: calc(var(--nt-mid) + var(--nt-gap)) !important;
+  }
+  #chat .mes:not(:has(.timestamp:not(:empty))) .ch_name {
+    margin-bottom: calc(var(--nt-gap) * 2 + 1.3em) !important;
+  }
+  #chat .mes .mes_timer:not(:empty) {
+    }
+  #chat .mes .tokenCounterDisplay:not(:empty) {
+    border-radius: 0 4px 4px 0 !important;
+    }
+  #chat .mes .mes_timer:empty {
+    display: none !important;
+  }
+  #chat .mes .tokenCounterDisplay:empty {
+    display: none !important;
+  }
+  /* 仅楼层号 */
+  #chat .mes:has(.mes_timer:empty):has(.tokenCounterDisplay:empty) .mesIDDisplay {
+    border-radius: 4px !important;
+  }
+  /* 楼层号+token（无timer） */
+  #chat .mes:has(.mes_timer:empty) .tokenCounterDisplay:not(:empty) {
+    border-radius: 0 4px 4px 0 !important;
+  }
+  /* 楼层号+timer（无token） */
+  #chat .mes:has(.tokenCounterDisplay:empty) .mes_timer:not(:empty) {
+    border-radius: 0 4px 4px 0 !important;
+  }
+  /* 正文 */
+
+  #chat .mes .mes_text {
+    padding-left: 6px !important;
+    padding-right: 2px !important;
+    padding-top: 10px !important;
+    padding-bottom: 62px !important;
+    margin-top: 4px !important;
+    border-top: 1px solid color-mix(in srgb, var(--SmartThemeEmColor) 28%, transparent) !important;
+  }
+  #chat .mes .mes_media_wrapper:not(:empty),
+  #chat .mes .mes_file_wrapper:not(:empty) {
+    padding-bottom: 36px !important;
+  }
+  #chat .mes .mes_text:has(.edit_textarea) {
+    padding-bottom: 92px !important;
+  }
+  /* 推理块也别贴计数器 */
+  #chat .mes .mes_reasoning_details,
+  #chat .mes .mes_reasoning_header,
+  #chat .mes details.mes_reasoning_details {
+    margin-top: 6px !important;
+  }
+
+  /* 操作菜单：向下展开（#chat 滚动容器裁切向上菜单） */
+  #chat .mes .ch_name {
+    overflow: visible !important;
+  }
+  #chat .mes .ch_name .mes_buttons {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 6px !important;
+    right: 0.5em !important;
+    overflow: visible !important;
+    z-index: 30 !important;
+  }
+  /* 编辑态：普通按钮行让位（ST 用内联 style 隐藏，这里兜底压掉） */
+  #chat .mes .mes_block:has(.edit_textarea) .ch_name .mes_buttons {
+    display: none !important;
+  }
+  /* swipe 计数器块：底部按钮排之下独立一行（定位上下文=mes） */
+  #chat .mes .swipeRightBlock {
+    bottom: -30px !important;
+  }
+  /* swipe_left：与计数器行同排同高，贴消息左缘 */
+  #chat .mes .swipe_left {
+    bottom: -30px !important;
+  }
+  #chat .mes .ch_name .mes_buttons .extraMesButtons.visible {
+    display: flex !important;
+    position: absolute !important;
+    top: auto !important;
+    bottom: calc(100% + 6px) !important;
+    right: -0.5em !important;
+    left: auto !important;
+    width: max-content !important;
+    max-width: 92vw !important;
+    height: 4.6em !important;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    align-content: flex-end !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 6px !important;
+    border-radius: 6px !important;
+    border: 1px solid var(--SmartThemeBorderColor) !important;
+    background: color-mix(in srgb, var(--SmartThemeBlurTintColor) 96%, #000 4%) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+    z-index: 999 !important;
+    overflow: visible !important;
+  }
+
+  /* 编辑按钮：正方形 3+3，整行右对齐不黏左边 */
+  #chat .mes .mes_edit_buttons {
+    float: none !important;
+    clear: both !important;
+    position: absolute !important;
+    bottom: 6px !important;
+    right: 0 !important;
+    z-index: 30 !important;
+    display: none;
+    display: none;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: max-content !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 4px 4px 4px 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+  #chat .mes .mes_edit_buttons[style*="flex"],
+  #chat .mes .mes_edit_buttons[style*="inline-flex"] {
+    display: flex !important;
+  }
+  #chat .mes .mes_edit_buttons .menu_button {
+    flex: none !important;
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    min-width: 2.25rem !important;
+    max-width: 2.25rem !important;
+    min-height: 2.25rem !important;
+    max-height: 2.25rem !important;
+    aspect-ratio: 1/1 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    opacity: 0.85 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #chat .mes .mes_edit_buttons .mes_edit_done { order: 1 !important; }
+  #chat .mes .mes_edit_buttons .mes_edit_copy { order: 2 !important; }
+  #chat .mes .mes_edit_buttons .mes_edit_cancel { order: 3 !important; }
+  #chat .mes .mes_edit_buttons .mes_edit_up { order: 4 !important; }
+  #chat .mes .mes_edit_buttons .mes_edit_down { order: 5 !important; }
+  #chat .mes .mes_edit_buttons .mes_edit_delete { order: 6 !important; }
+  #chat .mes .mes_edit_buttons .mes_edit_add_reasoning { order: 7 !important; }
+  /* 推理块右侧贴齐:手机按钮排absolute贴底,details的30px margin让位多余 */
+  #chat .mes .mes_reasoning_details {
+    margin-right: 0 !important;
+  }
+
+  }
+
+@supports (-webkit-touch-callout: none) {
+  .drawer-content:not(#left-nav-panel):not(#right-nav-panel) {
+    max-width: 100dvw;
+    top: var(--topBarBlockSize);
+  }
+}
+

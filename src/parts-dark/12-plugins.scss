@@ -1,0 +1,397 @@
+/* 手机端(@media max-width:899.98px)#top-settings-holder 是横排顶栏,与桌面独立:手机 toolbar 直接全方角(0),盖掉桌面竖排胶囊(横排方向错)和 modern-ui 的 7px 圆角(成串珠子) */
+@media (max-width: 899.98px) {
+  body.th-modern-enabled #top-settings-holder > .drawer,
+  body.th-modern-enabled #top-settings-holder > .drawer > .drawer-toggle,
+  body.th-modern-enabled #top-settings-holder > .drawer:first-child,
+  body.th-modern-enabled #top-settings-holder > .drawer:first-child > .drawer-toggle,
+  body.th-modern-enabled #top-settings-holder > .drawer:last-child,
+  body.th-modern-enabled #top-settings-holder > .drawer:last-child > .drawer-toggle { border-radius: 0 !important; }
+}
+
+/* 现代化界面世界书条目卡(e2c839c)移出 base-select 桌面媒体到顶层:原在 @media (hover:hover) and (pointer:fine) 里,手机触屏不匹配→左竖条/背景色没填;移顶层后手机也生效。#WorldInfo.th-modern-wi-enabled 限定,纯ST零命中 */
+#WorldInfo.th-modern-wi-enabled .world_entry { padding-bottom: 0 !important; border-color: var(--SmartThemeShadowColor) !important; border-left-width: 2.8px !important; border-left-color: var(--th-modern-wi-accent) !important; background-color: color-mix(in srgb, var(--SmartThemeBorderColor) 60%, var(--SmartThemeBlurTintColor)) !important; }
+#WorldInfo.th-modern-wi-enabled .world_entry .inline-drawer-header { border-color: transparent !important; }
+#WorldInfo.th-modern-wi-enabled .world_entry:hover, #WorldInfo.th-modern-wi-enabled .world_entry.th-modern-wi-selected, #WorldInfo.th-modern-wi-enabled .world_entry.th-modern-wi-row-checked { background-color: color-mix(in srgb, var(--th-modern-wi-accent) 13%, var(--SmartThemeBlurTintColor) 64%) !important; }
+#WorldInfo.th-modern-wi-enabled .world_entry:hover .inline-drawer-header, #WorldInfo.th-modern-wi-enabled .world_entry.th-modern-wi-selected .inline-drawer-header, #WorldInfo.th-modern-wi-enabled .world_entry.th-modern-wi-row-checked .inline-drawer-header { background-color: transparent !important; }
+#WorldInfo.th-modern-wi-enabled .world_entry:last-child { border-bottom-style: solid !important; border-bottom-width: 0.8px !important; }
+
+/* 手机世界书picker"原生界面"按钮(phone布局38×38藏文字)icon左右没居中:base gap 0.35rem + 藏文字的0宽text node让icon偏左;phone布局gap改0让icon居中 */
+body.th-modern-enabled .th-modern-mobile-world-picker[data-layout="phone"] .th-modern-mobile-world-picker-native { gap: 0 !important; }
+
+/* 现代化界面杂项适配(9774e98/d197c3b/dbd799b)移出 base-select 桌面媒体到顶层:原在 @media (hover:hover) and (pointer:fine) 里,手机触屏不匹配→抽屉框/展开底色/锁钮/titlebar 没生效;移顶层后手机也生效。body.th-modern-enabled 限定,纯ST零命中 */
+body.th-modern-enabled .inline-drawer { background-color: transparent !important; }
+body.th-modern-enabled .inline-drawer:not(:has(.inline-drawer-content[style*="display: block"])) { border-color: transparent !important; }
+body.th-modern-enabled .inline-drawer:has(.inline-drawer-content[style*="display: block"]) { border-color: var(--SmartThemeShadowColor) !important; }
+body.th-modern-enabled .inline-drawer:has(.inline-drawer-content[style*="display: block"]) > .inline-drawer-header.userSettingsInnerExpandable { margin-top: 0 !important; }
+body.th-modern-enabled #WI_panel_pin:checked + label { background-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 35%, transparent) !important; border-radius: 5px !important; }
+body.th-modern-enabled #wi-holder .inline-drawer { background-color: transparent !important; }
+body.th-modern-enabled #wi-holder .inline-drawer-content { background-color: transparent !important; border-color: transparent !important; }
+body.th-modern-enabled .th-modern-drawer-titlebar { border-radius: 7px 7px 0 0 !important; margin-bottom: 0 !important; }
+body.th-modern-enabled #rm_button_panel_pin_div, body.th-modern-enabled.th-modern-character-management #right-nav-panel > .th-modern-drawer-titlebar .th-modern-drawer-actions #rm_button_panel_pin_div { background-color: transparent !important; transition: none !important; }
+body.th-modern-enabled #rm_button_panel_pin_div { align-items: center !important; }
+body.th-modern-enabled #rm_button_panel_pin_div .right_menu_button, body.th-modern-enabled #rm_button_panel_pin_div .right_menu_button:hover { background-color: transparent !important; transition: none !important; }
+body.th-modern-enabled #rm_button_panel_pin_div label { background-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 12%, transparent) !important; border-radius: 5px !important; padding: 1px 6px !important; min-width: 30px !important; min-height: 30px !important; width: 30px !important; max-width: none !important; box-sizing: border-box !important; transition: none !important; }
+body.th-modern-enabled #rm_button_panel_pin_div label:hover { background-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 28%, transparent) !important; }
+body.th-modern-enabled #rm_button_panel_pin:checked + label { background-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 35%, transparent) !important; }
+
+/* 扩展抽屉折叠态杀框痕迹:modern-ui 给的底部 1px 分隔线 box-shadow(0px 1px 0px)折叠时仍可见,折叠态清 none;展开态保留分隔 */
+body.th-modern-enabled.th-modern-extension-settings .th-modern-extension-drawer:not(:has(.inline-drawer-content[style*="display: block"])) { box-shadow: none !important; }
+/* Luker 适配：世界书批量选中（world_entry.bulk-selected / world_entry_select_label，仅 Luker 有此类名，普通 ST 零命中）。
+   勾选框 label 的勾强制居中；卡片选中的 border 变色 + box-shadow 双环压掉，只留勾选框自身选中态 */
+.world_entry_select_label {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+.world_entry_select_label span.fa-check {
+  line-height: 1 !important;
+}
+.world_entry.bulk-selected .wi-card-entry,
+.world_entry.bulk-selected.disabledWIEntry .wi-card-entry {
+  box-shadow: none !important;
+}
+/* 条目头部整圈：选中时四边 border 都变 Quote 色（含左侧竖条） */
+.world_entry.bulk-selected .inline-drawer-header {
+  border-color: var(--SmartThemeQuoteColor) !important;
+}
+
+/* 欢迎页助手消息（type=assistant_message，普通 ST / Luker 的 welcome-screen 都用）：
+   头像/名字/日期原版就显示，不藏；只补原版本来就有、被主题样式盖掉的 mes_button 隐藏 */
+#chat .mes[type="assistant_message"] .mes_buttons,
+#chat .mes[type="assistant_message"] .mes_edit_buttons {
+  display: none !important;
+}
+
+/* smallSysMes 小系统消息（welcome_prompt 等）：恢复原版对 ch_name/头像区的隐藏。
+   主题头像区重构用 display:flex !important 把原版的 display:none 顶掉了，这里按原版语义补回 */
+#chat .mes.smallSysMes .mesAvatarWrapper,
+#chat .mes.smallSysMes:not(:has(.edit_textarea)) .ch_name {
+  display: none !important;
+}
+/* 选中态集中在勾选框：实色 Quote 底 + 深色勾，卡片不再加标记 */
+.world_entry_select_label:has(input:checked) {
+  background: var(--SmartThemeQuoteColor) !important;
+  border-color: var(--SmartThemeQuoteColor) !important;
+}
+.world_entry_select_label:has(input:checked) span.fa-check {
+  color: var(--SmartThemeBlurTintColor) !important;
+}
+/* 勾框内 Phosphor 勾缩到 0.8em（24px 勾框适配），span 精确居中 */
+.world_entry_select_label span.fa-check {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.8em !important;
+  line-height: 1 !important;
+}
+/* 勾框边框主题色化：常态细环，选中实环 */
+.world_entry_select_label {
+  border-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 35%, var(--SmartThemeBorderColor)) !important;
+}
+
+/* Luker/ST prompt-manager 分组适配（子项不越界+内容对齐+组标题胶囊化） */
+#completion_prompt_manager #completion_prompt_manager_list li.prompt-manager-group-child {
+    margin-left: 6px !important;
+    padding-left: 0.65em !important;
+}
+#completion_prompt_manager #completion_prompt_manager_list li.prompt-manager-group {
+    border-radius: 4px !important;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+}
+#completion_prompt_manager #completion_prompt_manager_list li.prompt-manager-group.expanded {
+    border-radius: 4px !important;
+}
+
+/* Luker/ST 补充图标替换（分组功能新增图标 + 漏网别名） */
+.fa-object-ungroup::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.2em !important;
+    height: 1.2em !important;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M104,40a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,40Zm40,168H112a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16ZM208,32H184a8,8,0,0,0,0,16h24V72a8,8,0,0,0,16,0V48A16,16,0,0,0,208,32Zm8,72a8,8,0,0,0-8,8v32a8,8,0,0,0,16,0V112A8,8,0,0,0,216,104ZM40,152a8,8,0,0,0,8-8V112a8,8,0,0,0-16,0v32A8,8,0,0,0,40,152Zm32,56H48V184a8,8,0,0,0-16,0v24a16,16,0,0,0,16,16H72a8,8,0,0,0,0-16ZM53.9,34.6A8,8,0,0,0,42.1,45.4l160,176A8,8,0,0,0,208,224a8.2,8.2,0,0,0,5.4-2.1,7.9,7.9,0,0,0,.5-11.3Z'/></svg>") !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+.fa-satellite-dish::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.2em !important;
+    height: 1.2em !important;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M135.16,84.42a8,8,0,0,0-14.32,0l-72,144a8,8,0,0,0,14.31,7.16L77,208h102.1l13.79,27.58A8,8,0,0,0,200,240a8,8,0,0,0,7.15-11.58ZM128,105.89,155.06,160H100.94ZM85,192l8-16h70.1l8,16Zm74.54-98.26a32,32,0,1,0-63,0,8,8,0,1,1-15.74,2.85,48,48,0,1,1,94.46,0,8,8,0,0,1-7.86,6.58,8.74,8.74,0,0,1-1.43-.13A8,8,0,0,1,159.4'/></svg>") !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+.fa-bug::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.2em !important;
+    height: 1.2em !important;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M208,144h16a8,8,0,0,0,0-16H208V112h16a8,8,0,0,0,0-16H207.6a79.6,79.6,0,0,0-20-45.3l17.8-16.9a7.9,7.9,0,0,0,.3-11.3,8,8,0,0,0-11.3-.3L175.8,39.9a79.8,79.8,0,0,0-95.7.1L61.4,22.2a8,8,0,0,0-11,11.6l17.9,17A79.9,79.9,0,0,0,48.4,96H32a8,8,0,0,0,0,16H48v16H32a8,8,0,0,0,0,16H48v8a70.3,70.3,0,0,0,.4,8H32a8,8,0,0,0,0,16H51.7a80,80,0,0,0,152.6,0H224a8,8,0,0,0,0-16H207.6a70.3,70.3,0,0,0,.4-8ZM128,40a64.1,64.1,0,0,1,63.5,56H64.5A64.1,64.1,0,0,1,128,40Zm8,175.5V136a8,8,0,0,0-16,0v79.5A64.1,64.1,0,0,1,64,152V112H192v40A64.1,64.1,0,0,1,136,215.5Z'/></svg>") !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+.fa-code::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.2em !important;
+    height: 1.2em !important;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M69.1,94.1,28.5,128l40.6,33.9a7.9,7.9,0,0,1,1.1,11.2A8.1,8.1,0,0,1,64,176a7.7,7.7,0,0,1-5.1-1.9l-48-40a7.9,7.9,0,0,1,0-12.2l48-40A8,8,0,1,1,69.1,94.1Zm176,27.8-48-40a8,8,0,0,0-10.2,12.2L227.5,128l-40.6,33.9A8,8,0,0,0,192,176a7.7,7.7,0,0,0,5.1-1.9l48-40a7.9,7.9,0,0,0,0-12.2ZM162.7,32.5a7.9,7.9,0,0,0-10.2,4.8l-64,176a7.9,7.9,0,0,0,4.8,10.2,8.6,8.6,0,0,0,2.7.5,7.9,7.9,0,0,0,7.5-5.3l64-176A7.9,7.9,0,0,0,162.7,32.5Z'/></svg>") !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+.fa-arrow-down-1-9::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 1.2em !important;
+    height: 1.2em !important;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M229.7,173.7l-40,40h-.1c-.1.2-.3.3-.5.5l-.3.2-.4.3-.3.2-.3.2h-.4l-.3.2h-.4l-.4.2h-4.6l-.4-.2h-.4l-.3-.2h-.4l-.3-.2-.3-.2-.4-.3-.3-.2-.5-.5h-.1l-40-40a8.1,8.1,0,0,1,11.4-11.4L176,188.7V112a8,8,0,0,1,16,0v76.7l26.3-26.4a8.1,8.1,0,0,1,11.4,11.4ZM120,120H48a8,8,0,0,0,0,16h72a8,8,0,0,0,0-16ZM48,72H184a8,8,0,0,0,0-16H48a8,8,0,0,0,0,16Zm56,112H48a8,8,0,0,0,0,16h56a8,8,0,0,0,0-16Z'/></svg>") !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* Luker/modern-ui 推理块按钮 hover 高亮正方形化 + 世界书 picker 搜索框聚焦去内框 */
+body.th-modern-enabled .mes_reasoning_actions .mes_reasoning_close_all,
+body.th-modern-enabled .mes_reasoning_actions .mes_reasoning_copy,
+body.th-modern-enabled .mes_reasoning_actions .mes_reasoning_edit {
+    width: 26px !important;
+    height: 22px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1px 3px !important;
+}
+body.th-modern-enabled .th-modern-mobile-world-picker-search input:focus {
+    outline: none !important;
+}
+
+/* 修正: 快捷插入位置 select 高度自适应规则限定select元素(checkbox同class不动) */
+@media (hover: hover) and (pointer: fine) {
+    body.th-modern-enabled select.th-modern-wi-shortcut-control {
+        appearance: base-select !important;
+        height: auto !important;
+        min-height: 32px !important;
+        white-space: normal !important;
+    }
+}
+
+/* 快捷插入位置 select 加min-width防极窄文字溢出(配合02eb288高度自适应) */
+@media (hover: hover) and (pointer: fine) {
+    body.th-modern-enabled select.th-modern-wi-shortcut-control {
+        min-width: 110px !important;
+    }
+}
+
+/* 暗色代码块:Gruvbox Dark hljs配色+容器只修文字色(亮色走分离暗色走融合,底色融进聊天底不加边框) */
+pre, .hljs, pre code.hljs {
+    color: #ebdbb2 !important;
+}
+code {
+    color: #ebdbb2 !important;
+}
+.hljs-comment, .hljs-quote { color: #928374 !important; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-deletion { color: #fb4934 !important; }
+.hljs-string, .hljs-addition, .hljs-regexp { color: #b8bb26 !important; }
+.hljs-number, .hljs-literal, .hljs-link { color: #d3869b !important; }
+.hljs-title, .hljs-function, .hljs-section, .hljs-name { color: #fabd2f !important; }
+.hljs-type, .hljs-class, .hljs-built_in, .hljs-builtin-name { color: #fabd2f !important; }
+.hljs-attr, .hljs-attribute, .hljs-variable, .hljs-template-variable, .hljs-selector-attr { color: #83a598 !important; }
+.hljs-symbol, .hljs-bullet, .hljs-meta, .hljs-selector-id, .hljs-selector-class { color: #8ec07c !important; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: bold; }
+
+/* 批量编辑激活态：与世界书 world_set 统一光晕 */
+.menu_button.bulk_edit_overlay_active::before {
+  filter: drop-shadow(0 0 4px var(--SmartThemeQuoteColor)) drop-shadow(0 0 2px var(--SmartThemeQuoteColor)) !important;
+}
+/* base-select 弹层滚动条融入化：透明轨道+主题色细 thumb，hover 主题强调色 */
+@media (hover: hover) and (pointer: fine) {
+  ::picker(select) { scrollbar-color: var(--SmartThemeBorderColor) transparent; scrollbar-width: thin; }
+  ::picker(select)::-webkit-scrollbar { width: 6px; }
+  ::picker(select)::-webkit-scrollbar-track { background: transparent; }
+  ::picker(select)::-webkit-scrollbar-thumb { background: var(--SmartThemeBorderColor); border-radius: 3px; }
+  ::picker(select)::-webkit-scrollbar-thumb:hover { background: var(--SmartThemeQuoteColor); }
+}
+/* toastr 弹窗主题化：主题底+左侧语义色条，标题按类型着色 */
+.toast, .toast-container .toast {
+  background-color: var(--SmartThemeBlurTintColor) !important;
+  background-image: none !important;
+  color: var(--SmartThemeBodyColor) !important;
+  border: 1px solid var(--SmartThemeBorderColor) !important;
+  border-left: 3px solid var(--SmartThemeQuoteColor) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+  text-shadow: none !important;
+}
+.toast-close-button { color: var(--SmartThemeBodyColor) !important; text-shadow: none !important; }
+.toast-success, .toast-container .toast-success { border-left-color: #b8bb26 !important; }
+.toast-error, .toast-container .toast-error { border-left-color: #fb4934 !important; }
+.toast-warning, .toast-container .toast-warning { border-left-color: #fabd2f !important; }
+.toast-info, .toast-container .toast-info { border-left-color: #83a598 !important; }
+.toast-success .toast-title { color: #b8bb26 !important; }
+.toast-error .toast-title { color: #fb4934 !important; }
+.toast-warning .toast-title { color: #fabd2f !important; }
+.toast-info .toast-title { color: #83a598 !important; }
+
+/* Luker 适配：luker-action-select2 焦点 3px 洗光过溢刺眼，收成 1px 细环。
+   .luker-action-select2 仅 Luker 存在此类名，普通 ST 零命中，不影响普通酒馆 */
+.select2-container.luker-action-select2.select2-container--focus .select2-selection--single,
+.select2-container.luker-action-select2.select2-container--open .select2-selection--single {
+  border-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 42%, var(--SmartThemeBorderColor)) !important;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--SmartThemeQuoteColor) 35%, transparent) !important;
+}
+/* Luker 适配：拆除 select2 展开变形（大圆角弹层/选项卡片/滑移/左竖条），
+   回落到与 base-select 一致的扁平列表。.luker-action-select2* 仅 Luker 存在，普通 ST 零命中 */
+.select2-dropdown.luker-action-select2-dropdown {
+  border-radius: 4px !important;
+  background: var(--SmartThemeBlurTintColor) !important;
+  border: 1px solid var(--SmartThemeBorderColor) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+}
+.luker-action-select2-dropdown .select2-search__field {
+  min-height: 0 !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--SmartThemeBorderColor) !important;
+  background: color-mix(in srgb, var(--black30a) 60%, transparent) !important;
+  box-shadow: none !important;
+}
+.luker-action-select2-dropdown .select2-results__option {
+  padding: 4px 8px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.luker-action-select2-dropdown .select2-results__option--selectable {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: background-color var(--animation-duration-1x) !important;
+}
+.luker-action-select2-dropdown .select2-results__option--highlighted.select2-results__option--selectable {
+  background: color-mix(in srgb, var(--SmartThemeQuoteColor) 18%, transparent) !important;
+  transform: none !important;
+}
+.luker-action-select2-dropdown .select2-results__option--selected {
+  font-weight: 600 !important;
+  background: color-mix(in srgb, var(--SmartThemeQuoteColor) 18%, transparent) !important;
+  box-shadow: none !important;
+}
+/* Luker 适配续：luker-action-select2 常态去掉外投影与 inset 高光，四角不再溢光。
+   仅 Luker 有此类名，普通 ST 零命中 */
+.select2-container.luker-action-select2 .select2-selection--single {
+  box-shadow: none !important;
+}
+/* Luker 适配续：焦点/展开态再去掉细环（亮版上显杂边），只留边框变色 */
+.select2-container.luker-action-select2.select2-container--focus .select2-selection--single,
+.select2-container.luker-action-select2.select2-container--open .select2-selection--single {
+  border-color: var(--SmartThemeQuoteColor) !important;
+  box-shadow: none !important;
+}
+/* ST-SevenDaysCal(构画)收藏按钮:绝对定位到名字右侧,不参与行盒计算(装/不装插件名字行高一致);尺寸恢复插件原样 */
+#chat .mes:has(.sp-anchor-btn) .name_text {
+  position: relative !important;
+  padding-right: 30px !important;
+}
+#chat .mes .sp-anchor-btn {
+  position: absolute !important;
+  right: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 22px !important;
+  height: 22px !important;
+  margin: 0 !important;
+  flex: none !important;
+}
+#chat .mes .sp-anchor-btn:hover {
+  transform: translateY(calc(-50% - 1px)) !important;
+}
+#chat .mes .sp-anchor-btn .sp-anchor-btn-svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+/* 移动端:构画按钮水平静态位(名字文字末尾),不贴消息右缘;去掉移动端占位padding */
+@media screen and (max-width: 1000px) {
+  #chat .mes .sp-anchor-btn {
+    right: auto !important;
+  }
+  #chat .mes:has(.sp-anchor-btn) .name_text {
+    padding-right: 0 !important;
+  }
+}
+
+/* 移动端:acu面板下移30px,给last_mes的swipe(-30px)让出显示区(面板文档流内紧贴消息底) */
+@media screen and (max-width: 1000px) {
+  .acu-wrapper {
+    margin-top: 30px !important;
+  }
+}
+
+/* 补漏: fa-calendar-days/fa-calendar-alt (ph:calendar-dots, 构画扩展入口) */
+.fa-calendar-days::before,
+.fa-calendar-alt::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* 酒馆助手tagfixer脚本按钮:emoji换Phosphor boxing-glove,固定1.2em盒不撑行 */
+#chat .mes .mes_buttons .tagfixer-fix-btn {
+  font-size: 0 !important;
+  position: relative !important;
+  display: inline-block !important;
+  /* 1.34=FA字形盒metrics(实测14.25*1.34≈19.1px),与同行FA按钮等高 */
+  width: calc(var(--mainFontSize) * 1.34) !important;
+  height: calc(var(--mainFontSize) * 1.34) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  vertical-align: middle !important;
+}
+#chat .mes .mes_buttons .tagfixer-fix-btn::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M168,16H120A56.06,56.06,0,0,0,64,72H56a32,32,0,0,0-32,32v29.19a16.09,16.09,0,0,0,3.51,10,8,8,0,0,0,.62.69L64,179.34V216a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V177.12l15.38-53.85a15.89,15.89,0,0,0,.62-4.39V72A56.06,56.06,0,0,0,168,16Zm40,102.88L192.31,173.8A7.85,7.85,0,0,0,192,176v40H80V176a8,8,0,0,0-2.38-5.69L40,133.12V104A16,16,0,0,1,56,88h8v16a8,8,0,0,0,16,0V72a40,40,0,0,1,40-40h48a40,40,0,0,1,40,40Zm-36.42,48.28L153.89,176l17.69,8.84a8,8,0,0,1-7.16,14.32L136,184.94l-28.42,14.22a8,8,0,1,1-7.16-14.32L118.11,176l-17.69-8.84a8,8,0,1,1,7.16-14.32L136,167.06l28.42-14.22a8,8,0,1,1,7.16,14.32Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* BaiBai-Book楼内摘要面板:有host的消息底部留44px,防编辑按钮/swipe浮在面板上(不装插件零命中) */
+#chat .mes:has(.bbs-fp-host) .mes_block {
+  padding-bottom: 44px !important;
+}
+
+/* 补漏: fa-book-bookmark (ph:book-bookmark, BaiBai-Book插件入口) */
+.fa-book-bookmark::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24ZM120,40h48v72L148.79,97.6a8,8,0,0,0-9.6,0L120,112Zm80,144H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40h32v88a8,8,0,0,0,12.8,6.4L144,114l27.21,20.4A8,8,0,0,0,176,136a8,8,0,0,0,8-8V40h16Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+/* 推理块展开限高+内容滚动(全端55vh):收起点始终可见,手机阅读/编辑不用滚太远 */
+#chat .mes_reasoning {
+    max-height: 55vh !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+}
+#chat .mes_reasoning_details .reasoning_edit_textarea {
+    max-height: 55vh !important;
+    overflow-y: auto !important;
+    resize: none !important;
+}
+

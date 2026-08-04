@@ -68,15 +68,18 @@ Material 系列配色独立：暗色用 gruvbox-material 官方色板（前景 `
 
 ```
 src/
-├── _base-dark.scss    暗色布局模板（10套共用）
-├── _base-light.scss   亮色布局模板（10套共用）
+├── parts-dark/        暗色布局模板分片（10套共用，按功能块拆为13个文件）
+├── parts-light/       亮色布局模板分片（10套共用，同上）
+├── _fonts.scss        字体定义（可本地覆盖，见下文）
 └── tokens/            每套主题一个颜色令牌文件
 scripts/
-├── build.js           编译+对账+包进JSON
+├── build.js           分片拼接+编译+对账+包进JSON
 └── migrate.js         一次性迁移脚本（已完成使命，留作参考）
 ```
 
-改 1 处 = 改 20 套：颜色改 tokens，布局改模板。
+模板分片按 `NN-名称.scss` 编号（01-head 头部/函数、03-chrome 顶栏表单控件、04-chat 聊天区、06-mobile 移动端、09-icons-fa 图标替换、13-mode-mobile 移动端头像几何等），构建时按文件名排序原样拼接，改哪块开哪片。
+
+改 1 处 = 改 20 套：颜色改 tokens，布局改对应分片。
 
 ### 构建
 
