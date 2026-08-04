@@ -5580,11 +5580,11 @@ body.th-modern-enabled .th-modern-mobile-world-picker-search input:focus {
     left: dual("50%", "72px") !important;
     right: auto !important;
     transform: translateX(dual("-50%", "0px")) !important;
-    width: dual("min(500px, 100%)", "0px") !important;
+    width: dual("min(500px, calc(0.85 * 100%))", "0px") !important;
     height: dual("281px", "var(--pc-chip-h)") !important;
-    min-width: dual("min(500px, 100%)", "0px") !important;
+    min-width: dual("min(500px, calc(0.85 * 100%))", "0px") !important;
     min-height: dual("281px", "var(--pc-chip-h)") !important;
-    max-width: dual("min(500px, 100%)", "9999px") !important;
+    max-width: dual("min(500px, calc(0.85 * 100%))", "9999px") !important;
     max-height: dual("281px", "var(--pc-chip-h)") !important;
     flex: none !important;
     display: block !important;
@@ -5734,7 +5734,7 @@ body.th-modern-enabled .th-modern-mobile-world-picker-search input:focus {
     left: 50% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
-    width: dual("min(520px, 100%)", "0px") !important;
+    width: dual("min(520px, calc(0.85 * 100% + 20px))", "0px") !important;
     height: dual("327px", "0px") !important;
     border-radius: 14px !important;
     background: color-mix(in srgb, var(--SmartThemeBlurTintColor) 88%, transparent) !important;
