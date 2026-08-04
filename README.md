@@ -60,6 +60,49 @@ Material 系列配色独立：暗色用 gruvbox-material 官方色板（前景 `
 
 欢迎。[MIT 协议](LICENSE)，保留出处即可。
 
+### 源层结构（想动手改的看这里）
+
+`themes/` 下的 20 套 JSON 是**构建产物**，不要直接改它们。真身在 `src/`：
+
+```
+src/
+├── _base-dark.scss    暗色布局模板（10套共用）
+├── _base-light.scss   亮色布局模板（10套共用）
+└── tokens/            每套主题一个颜色令牌文件
+scripts/
+├── build.js           编译+对账+包进JSON
+└── migrate.js         一次性迁移脚本（已完成使命，留作参考）
+```
+
+改 1 处 = 改 20 套：颜色改 tokens，布局改模板。
+
+### 构建
+
+```bash
+npm install                 # 首次，装 sass
+node scripts/build.js       # 构建并写入 themes/（语义不一致会拒绝写入，防手滑）
+node scripts/build.js --dry      # 只校验不写入
+node scripts/build.js --only 主题名  # 只构建某一套
+node scripts/build.js --force    # 有意变更时跳过对账
+```
+
+### 改配色（最简单的二创）
+
+只需改 `src/tokens/Gruvbox-xxx.scss` 里的颜色值，重跑构建。令牌是带引号的字符串（`$t01: "#83a598";`），引号不要丢——防 sass 把颜色值规范化改名。
+
+### 新增一套配色主题
+
+1. 复制一个现有 token 文件改名，改里面的 `$theme-name` 和颜色
+2. 在 `scripts/build.js` 的 `GROUPS` 对应组里加上主题名
+3. 在 `themes/harmony`、`themes/light` 或 `themes/material` 里放一个同名 JSON（可复制现有的，脚本只会重写其中的 `custom_css`）。注意把 `quote_text_color` 等颜色字段也改成新配色——酒馆靠它注入 accent
+4. 令牌文件里还要加 5 行 `$tint-NN`（accent 的半透明梯度，hover 光晕用）：从相邻主题抄一份，把 rgb 换成新 accent 即可
+5. 跑 `node scripts/build.js`
+
+### 两个已踩过的坑
+
+- **filter 过渡里别用 color-mix**：Chrome 不平滑插值，hover 光晕会"延迟突亮"。需要半透明 accent 用 `$tint-NN` 令牌（构建时预算好的 rgba）
+- **属性选择器带引号值**（如 `[is_user="true"]`）和 **alpha=1 的 rgba**：构建脚本已用占位符旁路保护，模板里照常规写即可
+
 ## 配色溯源
 
 - 基础配色（Harmony / Light）源自 [morhetz/gruvbox](https://github.com/morhetz/gruvbox)
