@@ -2026,6 +2026,12 @@ h4.margin0,
 #options .options-content a {
   align-items: center !important;
 }
+/* 光学修正:文字行盒下方给下伸字母留了余量,字形视觉重心偏盒中心上方,
+ * 数学居中的图标看起来偏高;下移1px补偿观感(用relative不碰transform,免与悬停动效冲突) */
+#options .options-content a i.fa-solid {
+  position: relative !important;
+  top: 1px !important;
+}
 
 .list-group-item .fa-solid,
 .extensionsMenuExtensionButton {
