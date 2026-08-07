@@ -2060,12 +2060,18 @@ h4.margin0,
 }
 /* 扩展菜单图标统一槽宽与字号:酒馆基础规则只给i元素定字号(mainFontSize*1.1),插件用div当图标时
  * 字号小10%,叠加SVG视觉宽差异,各行文字左边沿错行约3px;统一槽宽(fa-fw原生值)与字号后严格对齐 */
-#extensionsMenu .list-group-item .fa-solid,
+#extensionsMenu .fa-solid,
 #extensionsMenu .extensionsMenuExtensionButton {
   width: 1.25em !important;
   min-width: 1.25em !important;
   font-size: calc(var(--mainFontSize) * 1.1) !important;
   text-align: center !important;
+}
+/* 部分插件(如关键词过滤的词汇映射)插裸div行,不走list-group-item,酒馆基础样式只给它们
+ * align-items:baseline——SVG替换图标无字体基线会相对文字上浮;统一改居中对齐 */
+#extensionsMenu > .extension_container > div,
+#extensionsMenu > div:not(.extension_container) {
+  align-items: center !important;
 }
 
 /* 隐藏助手插件图标对齐 */
