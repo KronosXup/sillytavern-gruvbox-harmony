@@ -2577,4 +2577,26 @@ input[type="checkbox"] {
   background-repeat: no-repeat !important;
   background-position: center !important;
 }
+/* 对比弹窗楼层数(层叠) */
+.fa-layer-group::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M220 169.09l-92 53.65L36 169.09A8 8 0 0 0 28 182.91l96 56a8 8 0 0 0 8.06 0l96-56a8 8 0 1 0-8-13.82Z'/><path fill='%23d5c4a1' d='M220 121.09l-92 53.65L36 121.09A8 8 0 0 0 28 134.91l96 56a8 8 0 0 0 8.06 0l96-56a8 8 0 1 0-8-13.82Z'/><path fill='%23d5c4a1' d='M28 86.91l96 56a8 8 0 0 0 8.06 0l96-56a8 8 0 0 0 0-13.82l-96-56a8 8 0 0 0-8.06 0l-96 56a8 8 0 0 0 0 13.82Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+/* 撤回净化(逆时针箭头) */
+.fa-rotate-left::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M224 128a96 96 0 0 1-94.71 96H128A95.38 95.38 0 0 1 62.1 197.8a8 8 0 0 1 11-11.63A80 80 0 1 0 71.43 71.39a3.07 3.07 0 0 1-.26.25L60.63 81.29l17 17A8 8 0 0 1 72 112H24a8 8 0 0 1-8-8V56a8 8 0 0 1 13.66-5.7L49.31 70L60.25 60A96 96 0 0 1 224 128Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
 
