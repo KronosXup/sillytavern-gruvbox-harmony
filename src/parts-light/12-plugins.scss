@@ -523,3 +523,9 @@ body.th-modern-enabled .th-modern-mobile-world-picker-search input:focus {
     resize: none !important;
 }
 
+/* 关键词过滤插件(Veridis-Keyword-filtering)透视按钮:它在按钮排和消息末尾各插一个同功能按钮,
+ * 本主题按钮排已下置到正文末尾,两者重叠;隐藏末尾那个,保留按钮排里的(.bl-diff-btn-top) */
+#chat .mes .bl-diff-btn-bottom {
+  display: none !important;
+}
+
