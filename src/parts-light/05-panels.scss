@@ -81,6 +81,46 @@
   border-radius: 0 !important;
 }
 
+/* 手机窄屏:"已启用世界书"多选区溢出——启用的书多且书名长时,原生 #world_info select
+ * 按最长书名的 min-content 定宽(实测 53 本书撑到 431px),flex 项默认 min-width:auto
+ * 不会缩到内容宽以下,把整个 #WorldInfo 顶得比屏幕宽,条目行右侧图标被裁出界外。
+ * flex-basis 归零让它可收缩;select2 化的设备上真实显示元素是兄弟容器,max-width 兜住 */
+@media screen and (max-width: 1000px) {
+  #wiTopBlock #WIMultiSelector {
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+  #WIMultiSelector #world_info {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #WIMultiSelector .select2-container {
+    max-width: 100% !important;
+  }
+
+  /* 条目头同族病:标题/颜色select等子项按内容定宽不肯收缩(flex项min-width:auto),
+   * 把右侧交换/复制/删除三图标顶出卡片乃至屏幕(实测超2px);
+   * 全部直接子项允许收缩,但图标钉死不参与分摊,收缩由标题/下拉吸收;
+   * select额外限宽并用省略号截断 */
+  .world_entry .inline-drawer-header {
+    min-width: 0 !important;
+  }
+  .world_entry .inline-drawer-header > * {
+    min-width: 0 !important;
+  }
+  .world_entry .inline-drawer-header .menu_button,
+  .world_entry .inline-drawer-header .inline-drawer-toggle,
+  .world_entry .inline-drawer-header .killSwitch {
+    flex: none !important;
+  }
+  .world_entry .inline-drawer-header select {
+    max-width: 42% !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
 /* ============================================================
  * 角色管理器
  * ============================================================ */
