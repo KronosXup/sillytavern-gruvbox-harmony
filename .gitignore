@@ -24,3 +24,6 @@ releases/DC-å‘å¸ƒç¨¿-æºå±‚æ”¹ç‰ˆ.md
 # CDPÕï¶ÏÓÃEdgeÁÙÊ±ÅäÖÃÄ¿Â¼
 _cdp_profile/
 _diag_*.png
+
+# DC release posts: local only, not tracked
+releases/DC-*.md
