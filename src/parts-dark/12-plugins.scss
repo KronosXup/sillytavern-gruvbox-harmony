@@ -259,7 +259,7 @@ code {
   padding: 4px 8px !important;
   border-radius: 4px !important;
   border: 1px solid var(--SmartThemeBorderColor) !important;
-  /* 官方灰变量--black30a属禁用名单:换主题自己的ShadowColor(40%约等于原black30a×60%的黑度,但色调跟主题走) */
+  // 官方灰变量--black30a属禁用名单:换主题自己的ShadowColor(行注释不进产物,省体积)
   background: color-mix(in srgb, var(--SmartThemeShadowColor) 40%, transparent) !important;
   box-shadow: none !important;
 }
