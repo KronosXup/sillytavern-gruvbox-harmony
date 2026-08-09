@@ -120,7 +120,7 @@ body::before {
   content: "";
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(249, 245, 215, 0.92);
+  background-color: #{$base-veil};
   pointer-events: none;
   z-index: 0;
 }

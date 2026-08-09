@@ -387,7 +387,8 @@ body.th-modern-enabled .th-modern-mobile-world-picker-search input:focus {
   padding: 4px 8px !important;
   border-radius: 4px !important;
   border: 1px solid var(--SmartThemeBorderColor) !important;
-  background: color-mix(in srgb, var(--black30a) 60%, transparent) !important;
+  /* 官方灰变量--black30a属禁用名单:换主题自己的ShadowColor(40%约等于原black30a×60%的黑度,但色调跟主题走) */
+  background: color-mix(in srgb, var(--SmartThemeShadowColor) 40%, transparent) !important;
   box-shadow: none !important;
 }
 .luker-action-select2-dropdown .select2-results__option {

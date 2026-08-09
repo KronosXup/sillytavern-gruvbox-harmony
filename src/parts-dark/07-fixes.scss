@@ -112,7 +112,7 @@
  * ============================================================ */
 
 body {
-  background-color: #1d2021 !important;
+  background-color: #{$base-bg} !important;
 }
 
 /* 全屏暗色遮罩（聊天区域外） */
@@ -120,7 +120,7 @@ body::before {
   content: "";
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(29, 32, 33, 0.92);
+  background-color: #{$base-veil};
   pointer-events: none;
   z-index: 0;
 }
