@@ -311,6 +311,15 @@ input[type="range"]:hover,
   ::picker(select) {
     appearance: base-select;
   }
+  /* base-select把select变富按钮后选中值是普通行盒,长选项会折行堆叠
+   * (原生select永远单行,如位置下拉"角色定义"折成两行)。nowrap恢复单行,
+   * 继承属性会透进选中值容器;但别误伤弹层里的长选项——显式恢复换行 */
+  select {
+    white-space: nowrap !important;
+  }
+  select option {
+    white-space: normal !important;
+  }
   ::picker(select) {
     background-color: var(--SmartThemeBlurTintColor);
     border: 1px solid var(--SmartThemeBorderColor);

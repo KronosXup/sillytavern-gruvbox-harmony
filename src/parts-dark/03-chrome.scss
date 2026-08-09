@@ -151,6 +151,12 @@ select {
   color: var(--SmartThemeBodyColor);
   border: 1px solid var(--SmartThemeBorderColor) !important;
   border-radius: 4px;
+}
+
+/* 行距留白别打给挂.margin0的select(ST故意清零的,如世界书条目头的位置/状态下拉):
+ * !important强加4px上下边距会把控件列撑高,居中对齐后同排的数字框
+ * 整体上浮3px+与标题框错位(实测原版无此偏移) */
+select:not(.margin0) {
   margin: 4px 0 !important;
 }
 

@@ -499,6 +499,34 @@ body.th-modern-enabled .th-modern-mobile-world-picker-search input:focus {
 #chat .mes:has(.bbs-fp-host) .mes_block {
   padding-bottom: 44px !important;
 }
+/* BaiBai-Book编辑态重叠修复:host是.mes_text的兄弟节点(同在mes_block),面板下方
+ * 的留白只有本条的44px;移动端编辑态的92px打在.mes_text上(面板上方,白费),
+ * 而钉底方钮排窄屏会绕3+3两行(占底~86px),44px装不下→压上摘要卡。
+ * 双:has()特异性更高,编辑态把面板下方留白提到92px;无host或非编辑不碰 */
+#chat .mes:has(.bbs-fp-host) .mes_block:has(.edit_textarea) {
+  padding-bottom: 92px !important;
+}
+/* SevenDaysCal(构画)仪表盘盒与BaiBai-Book摘要卡之间的大空隙:盒住在.mes_text内
+ * 末尾,bbs卡是mes_text的兄弟跟在后面;移动端正文62px底padding本为钉底按钮排
+ * 留白,夹在两大块中间就成了空档(原版ST无此padding→仅本主题出现)。
+ * 后面有bbs卡时归零:按钮排留白已由卡片下方的44/92px接管;盒后无bbs卡的
+ * 普通消息仍留62px不碰。双:has()特异性压过06-mobile的两条 */
+#chat .mes:has(.bbs-fp-host) .mes_text:has(> .sp-inline-box:last-child) {
+  padding-bottom: 0 !important;
+}
+
+/* 构画盒与柏宝书卡对齐(仅移动端):移动端正文不对称padding左6/右2,
+ * 构画盒在正文内容区、bbs卡在正文外→构画盒窄8px且左缘偏6px。
+ * 负外边距把构画盒撑到正文边缘=与bbs卡同宽(PC端正文无padding,
+ * 两卡天然同宽,此规则等于复刻PC观感)。不动柏宝书一根毛,
+ * 无relative/transform无裁切风险;无bbs卡的普通消息不碰。
+ * 负外边距只撑到mes_block内容区,不超overflow-x:clip裁剪线 */
+@media screen and (max-width: 1000px) {
+  #chat .mes:has(.bbs-fp-host) .mes_text > .sp-inline-box:last-child {
+    margin-left: -6px !important;
+    margin-right: -2px !important;
+  }
+}
 
 /* 补漏: fa-book-bookmark (ph:book-bookmark, BaiBai-Book插件入口) */
 .fa-book-bookmark::before {

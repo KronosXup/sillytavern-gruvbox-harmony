@@ -19,8 +19,29 @@
   margin-top: 5px;
 }
 
+/* 条目标题防截断:从角色卡跳转世界书时条目在抽屉还隐藏的半动画态渲染,
+ * autoSetHeight 标题框靠JS量scrollHeight定高,隐藏态量出零→长标题锁死单行
+ * (正常打开面板已可见则量得对)。field-sizing:content改浏览器原生自适应,
+ * 渲染时可见与否都正确;height:auto!important洗掉JS误写的内联死高。
+ * @supports包着:不支持的旧浏览器维持原行为不劣化
+ * (曾因条目头错位被回滚排查,真凶为07-fixes的alignitemscenter误击,已恢复) */
+@supports (field-sizing: content) {
+  .world_entry textarea[name="comment"] {
+    field-sizing: content;
+    height: auto !important;
+  }
+}
+
 .wi-card-entry {
   border: none;
+}
+
+/* 位置下拉宽度:widthNatural把宽度全unset,框缩成选中值内容宽;
+ * 实测15em/12em手机上拉太长,用户定调"到插入深度后面即可":
+ * 收成8.5em卡住主标签,尾巴(@D等)由原生select省略号自截 */
+.world_entry select[name="position"] {
+  min-width: 8.5em !important;
+  max-width: 100% !important;
 }
 
 .select2-container .select2-selection--multiple {

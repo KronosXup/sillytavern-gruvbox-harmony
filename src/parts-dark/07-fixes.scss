@@ -7,7 +7,7 @@
 #rm_api_block .flex-container.alignItemsBaseline,
 #title_api,
 #AdvancedFormatting .flex-container.alignItemsBaseline:not(h3),
-#WorldInfo .alignitemscenter:not(#world_popup *),
+#WorldInfo .alignitemscenter:not(#world_popup *):not(.world_entry *),
 #Backgrounds .bg-header-row-1,
 #user-settings-block div[name="userSettingsRowOne"],
 #rm_extensions_block .alignitemscenter.flex-container.wide100p:not(.justifyCenter) {

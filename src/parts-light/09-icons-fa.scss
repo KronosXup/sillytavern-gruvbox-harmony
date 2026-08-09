@@ -2057,6 +2057,12 @@ h4.margin0,
   position: relative !important;
   top: 1px !important;
 }
+/* 魔法棒菜单同法光学补偿:图标+文字行内,字形视觉重心偏盒中心上方,图标下移1px对齐观感 */
+#extensionsMenu .fa-solid,
+#extensionsMenu .extensionsMenuExtensionButton {
+  position: relative !important;
+  top: 1px !important;
+}
 
 .list-group-item .fa-solid,
 .extensionsMenuExtensionButton {
