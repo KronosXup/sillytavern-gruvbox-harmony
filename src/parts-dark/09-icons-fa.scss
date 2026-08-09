@@ -3777,3 +3777,29 @@ input[type="checkbox"] {
 :is(.sp-root,.sp-lines-inline,.sp-almanac-inline,.sp-schedule-inline,.sp-anchor-btn,.sp-tagpicker,.sp-toast) .sp-sch-del-one:hover {
   background: transparent !important;
 }
+/* ===== 构画文本符号图标化·线头标签 =====
+ * 插件用文本字符⏸(搁置)/→(推进)当标签,emoji字体破Phosphor观感;
+ * font-size:0藏字符,::before出mask图标跟color(搁置态--sp-subtle自动生效);
+ * 容器.sp-line-next是flex-start顶对齐,行盒压塌后图标贴行顶显高,
+ * margin-top压回原字符基线视觉中心(行盒高=字号×1.45) */
+:is(.sp-root,.sp-lines-inline,.sp-almanac-inline,.sp-schedule-inline,.sp-anchor-btn,.sp-tagpicker,.sp-toast) .sp-line-next-tag {
+  font-size: 0 !important;
+}
+:is(.sp-root,.sp-lines-inline,.sp-almanac-inline,.sp-schedule-inline,.sp-anchor-btn,.sp-tagpicker,.sp-toast) .sp-line-next-tag::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 0.62rem !important;
+  height: 0.62rem !important;
+  margin-top: 0.17rem !important;
+  background-color: currentColor !important;
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path d='M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z'/></svg>") !important;
+  mask-size: contain !important;
+  mask-repeat: no-repeat !important;
+  mask-position: center !important;
+}
+:is(.sp-root,.sp-lines-inline,.sp-almanac-inline,.sp-schedule-inline,.sp-anchor-btn,.sp-tagpicker,.sp-toast) .sp-inline-next .sp-line-next-tag::before {
+  margin-top: 0.12rem !important;
+}
+:is(.sp-root,.sp-lines-inline,.sp-almanac-inline,.sp-schedule-inline,.sp-anchor-btn,.sp-tagpicker,.sp-toast) .sp-line-next-stall .sp-line-next-tag::before {
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path d='M200,32H160a16,16,0,0,0-16,16V208a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm0,176H160V48h40ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Zm0,176H56V48H96Z'/></svg>") !important;
+}
