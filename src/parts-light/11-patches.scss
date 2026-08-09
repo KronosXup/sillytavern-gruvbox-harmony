@@ -320,6 +320,16 @@ input[type="range"]:hover,
   select option {
     white-space: normal !important;
   }
+  /* 主题选择器选中值"不长不短被裁/再长折行":富化后选中值行盒宽随外框,
+   * nowrap只防折行不防裁切;按选中值内容定宽恢复原生select观感。
+   * ST只给它padding:3px 5px,箭头画在right 0.5em——框贴紧文字后必叠箭头,
+   * padding-right补到text_pole同款20px(fit-content含padding,框自动变宽)。
+   * 只点#themes不撒全站:位置下拉8.5em等是刻意定宽,撒开会顶掉 */
+  select#themes {
+    width: fit-content !important;
+    min-width: fit-content !important;
+    padding-right: 20px !important;
+  }
   ::picker(select) {
     background-color: var(--SmartThemeBlurTintColor);
     border: 1px solid var(--SmartThemeBorderColor);
