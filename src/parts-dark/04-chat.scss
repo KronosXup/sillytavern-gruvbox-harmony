@@ -125,7 +125,7 @@ div[is_user="false"] .avatar img {
 }
 
 #chat .mes.selected {
-  background-color: rgba(204, 36, 29, 0.3) !important;
+  background-color: #{$danger-veil} !important;
 }
 
 /* ---文档模式--- */

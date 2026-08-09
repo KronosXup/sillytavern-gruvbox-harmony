@@ -130,7 +130,7 @@ textarea[type="search"] {
 .redWarningBG,
 .red_button,
 .mes_edit_cancel.menu_button {
-  background-color: rgba(204, 36, 29, 1) !important;
+  background-color: #{$danger} !important;
   color: #fff !important;
 }
 

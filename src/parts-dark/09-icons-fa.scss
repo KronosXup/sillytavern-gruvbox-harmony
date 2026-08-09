@@ -61,8 +61,8 @@
 }
 
 .redOverlayGlow {
-  color: #cc241d !important;
-  filter: drop-shadow(0 0 4px rgba(204, 36, 29, 0.4)) !important;
+  color: #{$danger} !important;
+  filter: drop-shadow(0 0 4px #{$danger-glow}) !important;
 }
 
 /* API 断连状态图标 - Gruvbox红 */
