@@ -341,7 +341,7 @@
     overflow: visible !important;
   }
 
-  /* 编辑按钮：正方形 3+3，整行右对齐不黏左边 */
+  /* 编辑按钮：正方形整行右对齐不黏左边;插件加钮多到超宽时允许换行兜底(用户拍板:先不缩小) */
   #chat .mes .mes_edit_buttons {
     float: none !important;
     clear: both !important;
@@ -351,7 +351,7 @@
     z-index: 30 !important;
     display: none;
     flex-direction: row !important;
-    flex-wrap: nowrap !important;
+    flex-wrap: wrap !important;
     justify-content: flex-end !important;
     align-items: center !important;
     gap: 6px !important;
