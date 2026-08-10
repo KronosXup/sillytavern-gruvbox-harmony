@@ -387,28 +387,11 @@
   #chat .mes .mesAvatarWrapper {
     min-width: max-content !important;
   }
-  /* 构画(sp-anchor)按钮适配:名字行不裁剪(overflow visible),按钮absolute不撑行,行高与老版一致 */
+  /* 构画(sp-anchor)按钮适配:名字行不裁剪(overflow visible)给按钮让位;按钮本体样式在12-plugins已统一,此处不重复 */
   #chat .mes:has(.sp-anchor-btn) .name_text {
     position: relative !important;
     padding-right: 30px !important;
     overflow: visible !important;
-  }
-  #chat .mes .sp-anchor-btn {
-    position: absolute !important;
-    right: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: 22px !important;
-    height: 22px !important;
-    margin: 0 !important;
-    flex: none !important;
-  }
-  #chat .mes .sp-anchor-btn:hover {
-    transform: translateY(calc(-50% - 1px)) !important;
-  }
-  #chat .mes .sp-anchor-btn .sp-anchor-btn-svg {
-    width: 15px !important;
-    height: 15px !important;
   }
   /* 移动端:构画按钮浮层贴名字右端(30px占位隔开时间戳),不占行宽→名字+时间戳始终同行 */
   @media screen and (max-width: 1000px) {
