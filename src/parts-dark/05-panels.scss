@@ -133,16 +133,22 @@
     text-overflow: ellipsis !important;
   }
 
-  /* 手机端条目头控件排(位置/深度/顺序/触发%)防御:系统字体缩放或ST字号放大时
-   * 整排文字+em宽度线性膨胀(默认12px字号355px,放大120%即顶满412视口)整排挤出屏幕;
-   * 允许换行兜底——放不下折两行(位置+深度一行/顺序+触发%一行),任何字号不溢出;
-   * 子项同步允许收缩,数字框限宽防自身膨胀。默认字号下零影响(不触发折行) */
+  /* 手机端条目头控件排(位置/深度/顺序/触发%)收紧+防溢出:
+   * 1)防溢出——系统字体缩放/ST字号放大时整排em宽度线性膨胀(默认12px字号355px,
+   *   放大120%即顶满412视口)整排挤出屏幕,允许换行兜底,任何字号不溢出;
+   * 2)治"位置和深度隔很远"(真机字号放大环境下项间大空隙,浏览器/默认字号复现不了):
+   *   强制起始对齐(堵space-between分散)+固定4px间距(堵em系gap随字号膨胀)+
+   *   子项禁止拉伸占位(堵flex-grow把位置块拉满吞掉空隙),项目永远紧挨;
+   * 默认字号下与浏览器现状一致(gap本就4px),零视觉变化 */
   .WIEntryHeaderControls {
     flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 4px !important;
     min-width: 0 !important;
   }
   .WIEntryHeaderControls .world_entry_form_control {
     min-width: 0 !important;
+    flex: 0 1 auto !important;
   }
   .WIEntryHeaderControls input[type="number"] {
     max-width: 100% !important;
