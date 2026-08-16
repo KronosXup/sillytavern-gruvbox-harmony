@@ -403,3 +403,47 @@
   }
 }
 
+/* ---iPad / iOS Safari 适配（@supports 检测，桌面/安卓零命中）---
+ * iOS Safari 地址栏收缩/橡皮筋滚动导致 fixed 元素坐标漂移：设置面板展开后
+ * 不贴顶、向右下偏移超出屏幕。锁死页面滚动（滚动交给 #chat）+ 顶栏 GPU 固定
+ * + 抽屉/面板重定位到顶栏下方。宽屏(1000+)顶栏/抽屉按聊天宽度居中对齐
+ * （与 Nord 主题同源方案，2.css sheld 居中变体） */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    touch-action: none;
+  }
+  #top-bar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  #top-settings-holder { top: 0 !important; }
+  @media screen and (min-width: 1000px) {
+    #sheld, #top-bar {
+      width: var(--sheldWidth) !important;
+      max-width: 100%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    #top-settings-holder .drawer .drawer-content {
+      left: 0;
+      right: 0;
+      width: var(--sheldWidth) !important;
+      max-width: 100%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    #left-nav-panel, #right-nav-panel, #character_popup, #world_popup, .drawer-content {
+      margin-top: 0;
+      top: var(--topBarBlockSize);
+    }
+  }
+}
+
