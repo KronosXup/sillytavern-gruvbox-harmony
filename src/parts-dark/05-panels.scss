@@ -155,6 +155,15 @@
   }
 }
 
+/* 新版 Luker 世界书:与条目交互时(点箭头/开关/标题)整卡 focus-within 反馈移除。
+ * 上游给 .wi-card-entry:focus-within 上 border 变色+外圈1px box-shadow 细环,
+ * 用户验收:该圈多余。选择器与上游逐字对齐(含 :not(.bulk-selected)),
+ * border 还原常态色,细环压无;点击别处焦点离开后本就还原,零残留 */
+#WorldInfo #world_popup_entries_list > .world_entry:not(.bulk-selected) .wi-card-entry:focus-within {
+  border-color: var(--SmartThemeBorderColor) !important;
+  box-shadow: none !important;
+}
+
 /* ============================================================
  * 角色管理器
  * ============================================================ */
