@@ -140,24 +140,36 @@
     padding: 0 !important;
     top: dual("(min((90vw - 20px) * 0.5625, 270px) + 17px)", "8px") !important;
     left: dual("(50% - 0.5 * min(90vw - 20px, 480px) + 14px)", "calc(var(--mb-avatar) + 10px)") !important;
+    right: 0 !important;
   }
   #chat .mes .ch_name .alignItemsBaseline {
     display: flex !important;
     flex-wrap: nowrap !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     align-items: center !important;
     column-gap: 6px !important;
     row-gap: 2px !important;
-    width: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  #chat .mes .ch_name .timestamp {
+    flex: 0 0 auto !important;
+    width: max-content !important;
+    min-width: max-content !important;
+    max-width: none !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
   }
   #chat .mes .ch_name .name_text {
-    flex: 1 1 auto !important;
+    flex: 1 1 0 !important;
     min-width: 0 !important;
+    width: 0 !important;
     display: block !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
-    max-width: 60vw !important;
+    max-width: none !important;
     line-height: dual("1.3em", "1.2em") !important;
     font-weight: 600 !important;
   }
@@ -396,10 +408,6 @@
   }
   /* 移动端:构画按钮浮层贴名字右端(30px占位隔开时间戳),不占行宽→名字+时间戳始终同行 */
   @media screen and (max-width: 1000px) {
-    #chat .mes:has(.sp-anchor-btn) .ch_name > .flex-container.flex1,
-    #chat .mes:has(.sp-anchor-btn) .ch_name > .flex1 {
-      right: 0 !important;
-    }
     #chat .mes .sp-anchor-btn {
       position: absolute !important;
       right: 0 !important;
