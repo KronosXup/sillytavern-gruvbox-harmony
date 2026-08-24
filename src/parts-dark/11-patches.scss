@@ -298,3 +298,8 @@ body.th-modern-enabled .topRightInset { right: 80px !important; }
 /* select 箭头 no-repeat/position 移到顶层(原在 @media (hover:hover) and (pointer:fine) 里,手机触屏不匹配导致铺满倒三角):现在桌面/手机/纯ST 通用 */
 select { background-repeat: no-repeat !important; background-position: right 0.5em center !important; }
 
+/* 原生“模型图标”开关: 06-mobile/10-mode0 为时间戳图标设了更高优先级的 display, 需让 no-modelIcons 重新接管 */
+body.no-modelIcons #chat .mes .timestamp-icon,
+body.no-modelIcons #chat .mes .timestamp-icon svg {
+  display: none !important;
+}
