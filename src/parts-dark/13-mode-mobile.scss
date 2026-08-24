@@ -143,7 +143,7 @@
   }
   #chat .mes .ch_name .alignItemsBaseline {
     display: flex !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     justify-content: center !important;
     align-items: center !important;
     column-gap: 6px !important;
@@ -151,7 +151,8 @@
     width: auto !important;
   }
   #chat .mes .ch_name .name_text {
-    flex: 0 0 auto !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
     display: block !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -395,6 +396,10 @@
   }
   /* 移动端:构画按钮浮层贴名字右端(30px占位隔开时间戳),不占行宽→名字+时间戳始终同行 */
   @media screen and (max-width: 1000px) {
+    #chat .mes:has(.sp-anchor-btn) .ch_name > .flex-container.flex1,
+    #chat .mes:has(.sp-anchor-btn) .ch_name > .flex1 {
+      right: 0 !important;
+    }
     #chat .mes .sp-anchor-btn {
       position: absolute !important;
       right: 0 !important;
@@ -408,6 +413,8 @@
     #chat .mes:has(.sp-anchor-btn) .name_text {
       position: relative !important;
       padding-right: 30px !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
     }
   }
 
