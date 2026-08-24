@@ -144,7 +144,8 @@
   }
   #chat .mes .ch_name .alignItemsBaseline {
     display: flex !important;
-    flex-wrap: nowrap !important;
+    /* 大卡按实际宽度自适应换行; mode1 的 name_text flex-basis=0, 仍保持传统单行 */
+    flex-wrap: wrap !important;
     justify-content: dual("center", "flex-start") !important;
     align-items: center !important;
     column-gap: 6px !important;
@@ -162,7 +163,7 @@
     white-space: nowrap !important;
   }
   #chat .mes .ch_name .name_text {
-    flex: dual("1 1 auto", "1 1 0") !important;
+    flex: dual("0 1 auto", "1 1 0") !important;
     min-width: 0 !important;
     width: dual("auto", "0px") !important;
     display: block !important;
