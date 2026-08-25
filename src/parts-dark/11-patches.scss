@@ -303,3 +303,9 @@ body.no-modelIcons #chat .mes .timestamp-icon,
 body.no-modelIcons #chat .mes .timestamp-icon svg {
   display: none !important;
 }
+
+/* 采样参数面板：隐藏滑块提示文字与右上角帮助问号（桌面/移动端一致） */
+#clickSlidersTips,
+a.topRightInset {
+  display: none !important;
+}
