@@ -169,15 +169,6 @@ select {
   filter: none;
 }
 
-/* ===== 滑块提示条置顶 ===== */
-/* ST把提示条absolute钉在面板顶但z-auto,滚动时被按钮排等浮层内容压到底下; */
-/* 提层级但不补底色(用户要求),pointer-events穿透保证右上问号可点可见 */
-.editable-slider-notification {
-  z-index: 20;
-  background-color: transparent;
-  pointer-events: none;
-}
-
 /* ===== 颜色选择器圆角 ===== */
 /* toolcool-color-picker按钮在shadow DOM内,走组件暴露的官方CSS变量 */
 toolcool-color-picker {
@@ -259,12 +250,6 @@ input[list]::-webkit-calendar-picker-indicator {
   }
 }
 
-/* ===== 问号帮助链接置顶 ===== */
-/* .topRightInset绝对定位但z-auto,和滑块提示条同病:被滚动内容的按钮排盖住;提到提示条(z20)之上保持可点 */
-.topRightInset {
-  z-index: 21;
-}
-
 /* modern-ui 侧边工具栏胶囊:竖排首顶圆/末底圆/中间方,覆盖纯ST横排的首左圆/末右圆规则(漏到竖排错位);body.th-modern-enabled限定 */
 body.th-modern-enabled #top-settings-holder > .drawer,
 body.th-modern-enabled #top-settings-holder > .drawer > .drawer-toggle { border-radius: 0 !important; }
@@ -291,9 +276,6 @@ body.th-modern-enabled.th-modern-two-column .th-modern-recent-toggle .th-modern-
 /* modern-ui 侧栏整体方角改圆:侧栏 #th-modern-sidebar 与列表 .th-modern-recent-list 各带 box-shadow(投在奶油底上可见),原都方角,都圆 */
 body.th-modern-enabled.th-modern-two-column #th-modern-sidebar { border-radius: var(--th-modern-radius-sm) !important; }
 body.th-modern-enabled.th-modern-two-column .th-modern-recent-list { border-radius: var(--th-modern-radius-sm) !important; }
-
-/* 收尾:AI面板问号链接 .topRightInset 右移避开标题栏 fullscreen/close 按钮(原 right:23px 与按钮重叠) */
-body.th-modern-enabled .topRightInset { right: 80px !important; }
 
 /* select 箭头 no-repeat/position 移到顶层(原在 @media (hover:hover) and (pointer:fine) 里,手机触屏不匹配导致铺满倒三角):现在桌面/手机/纯ST 通用 */
 select { background-repeat: no-repeat !important; background-position: right 0.5em center !important; }
