@@ -76,6 +76,12 @@
   box-shadow: none !important;
 }
 
+/* modern-ui 把操作按钮绝对定位在输入卡片底部；
+ * 用外边距在原发光下边框之后保留按钮行，让多行输入只向上增长。 */
+body.th-modern-enabled #send_textarea {
+  margin-bottom: calc(max(38px, calc(var(--mainFontSize) * 1.8)) + 6px) !important;
+}
+
 /* ---抽屉内部分割线--- */
 .drawer-content .inline-drawer {
   border-bottom: none;
