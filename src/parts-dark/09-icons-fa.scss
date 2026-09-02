@@ -2039,19 +2039,17 @@ h4.margin0,
 #options .options-content a {
   align-items: center !important;
 }
-/* 光学修正:文字行盒下方给下伸字母留了余量,字形视觉重心偏盒中心上方,
- * 数学居中的图标看起来偏高;下移1px补偿观感(用relative不碰transform,免与悬停动效冲突) */
+/* 两套菜单的行基线与图标结构不同,分别做光学修正 */
 #options .options-content a i.fa-solid {
   position: relative !important;
-  top: 1px !important;
+  top: 0.9px !important;
 }
-/* 魔法棒菜单同法光学补偿:图标+文字行内,字形视觉重心偏盒中心上方,图标下移1px对齐观感 */
 #extensionsMenu .fa-solid,
-#extensionsMenu .extensionsMenuExtensionButton {
+#extensionsMenu .extensionsMenuExtensionButton,
+#extensionsMenu #bby-menu-item::before {
   position: relative !important;
-  top: 1px !important;
+  top: 0.25px !important;
 }
-
 .list-group-item .fa-solid,
 .extensionsMenuExtensionButton {
   display: flex !important;
@@ -2066,6 +2064,48 @@ h4.margin0,
   min-width: 1.25em !important;
   font-size: calc(var(--mainFontSize) * 1.1) !important;
   text-align: center !important;
+}
+/* 角色卡管理入口:扩展内嵌层叠SVG改为Phosphor cards-three,不影响其它扩展图标 */
+#extensionsMenu #charManagerBtn .extensionsMenuExtensionButton svg {
+  display: none !important;
+}
+#extensionsMenu #charManagerBtn .extensionsMenuExtensionButton::before {
+  content: "" !important;
+  display: inline-block !important;
+  flex: 0 0 auto !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M208,88H48a16,16,0,0,0-16,16v96a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V104A16,16,0,0,0,208,88Zm0,112H48V104H208v96ZM48,64a8,8,0,0,1,8-8H200a8,8,0,0,1,0,16H56A8,8,0,0,1,48,64ZM64,32a8,8,0,0,1,8-8H184a8,8,0,0,1,0,16H72A8,8,0,0,1,64,32Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+/* 菜单精简器:使用Phosphor list-dashes */
+#extensionsMenu #mc3-launcher-wand > i.fa-bars-staggered::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M88,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H96A8,8,0,0,1,88,64Zm128,56H96a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,64H96a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16ZM56,56H40a8,8,0,0,0,0,16H56a8,8,0,0,0,0-16Zm0,64H40a8,8,0,0,0,0,16H56a8,8,0,0,0,0-16Zm0,64H40a8,8,0,0,0,0,16H56a8,8,0,0,0,0-16Z'/></svg>") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+/* 柏宝砚:插件自带裸SVG改为Phosphor feather,并纳入扩展菜单统一图标槽 */
+#extensionsMenu #bby-menu-item > svg {
+  display: none !important;
+}
+#extensionsMenu #bby-menu-item::before {
+  content: "" !important;
+  display: inline-block !important;
+  flex: 0 0 auto !important;
+  width: 1.25em !important;
+  min-width: 1.25em !important;
+  height: 1.25em !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><path fill='%23d5c4a1' d='M221.28,34.75a64,64,0,0,0-90.49,0L60.69,104A15.9,15.9,0,0,0,56,115.31v73.38L26.34,218.34a8,8,0,0,0,11.32,11.32L67.32,200H140.7A15.92,15.92,0,0,0,152,195.32l0,0,69.23-70A64,64,0,0,0,221.28,34.75ZM142.07,46.06A48,48,0,0,1,211.79,112H155.33l34.35-34.34a8,8,0,0,0-11.32-11.32L120,124.69V67.87ZM72,115.35l32-31.67v57l-32,32ZM140.7,184H83.32l56-56h56.74Z'/></svg>") !important;
+  background-size: 1.2em 1.2em !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 /* 部分插件(如关键词过滤的词汇映射)插裸div行,不走list-group-item,酒馆基础样式只给它们
  * align-items:baseline——SVG替换图标无字体基线会相对文字上浮;统一改居中对齐 */
