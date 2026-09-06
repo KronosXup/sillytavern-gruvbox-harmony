@@ -187,6 +187,53 @@
   background-color: var(--SmartThemeBorderColor);
 }
 
+/* 当前人设:按内容实际占宽换行,不以固定断点提前拆开姓名。
+ * 按钮组保持整体;仅当整组超过面板宽度时允许组内换行。 */
+#persona_controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+#persona_controls > .persona_name {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+#persona_controls > .persona_controls_buttons_block {
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: 100%;
+  min-width: 0;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+#persona_controls > .persona_controls_buttons_block > .menu_button {
+  flex: 0 0 auto;
+}
+
+#persona_controls > label[for="persona-management-dropdown"] {
+  flex: 0 0 4.5em;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+}
+
+#persona_controls #persona-management-dropdown {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  /* 覆盖主题 select:not(.margin0) 的重要上下边距,让同排控件居中。 */
+  margin: 0 !important;
+}
+
 /* ---背景图库--- */
 .bg_example {
   box-shadow: none;
