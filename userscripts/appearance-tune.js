@@ -1,5 +1,5 @@
 // ============================================================
-// 外观速调(酒馆助手脚本版 v4.1)
+// 外观速调(酒馆助手脚本版 v4.2)
 // 配套主题: Gruvbox Harmony/Material 全系列(--avatar-mode / --font-* 变量机制)
 // ============================================================
 // 功能: 魔法棒(扩展)菜单里加一个"外观速调"条目,点开居中大面板:
@@ -7,6 +7,8 @@
 //   字体: sans / serif / mono 三类分管,每类独立填
 //         "字体CSS链接 + 字体名"(等效 _fonts-local.scss 的玩法),
 //         三类各挂独立 <link>,可同时加载三种不同字体。
+//   避让: 移动端底部避让高度/末尾间隔(全面屏手势条设备用,默认关),
+//         注入 ≤1000px 门控 CSS,设备差异问题住运行时层不动主题。
 // 使用: 脚本库导入本脚本(或配套 JSON),启用即可。
 // 要点: 酒馆助手脚本运行在 iframe 内,只有 $/jQuery/toastr 被桥接到
 //       父页面;因此本脚本全部 DOM 操作显式走 window.parent。
@@ -16,6 +18,8 @@
   'use strict';
 
   var KEY_AVATAR = 'appearance_avatar_mode'; // 0=大卡 1=小圆
+  var KEY_GESTURE_PAD = 'appearance_gesture_pad'; // 移动端避让高度px 0=关
+  var KEY_GESTURE_GAP = 'appearance_gesture_gap'; // 移动端末尾间隔px 0=关
   var ITEM_ID = 'appearance_tune_menu_container';
   var PANEL_ID = 'appearance_tune_panel';
   var BACKDROP_ID = 'appearance_tune_backdrop';
@@ -120,6 +124,31 @@
     });
     FONT_CLASSES.forEach(function (c) { sdel(fontKeyUrl(c[0])); sdel(fontKeyFamily(c[0])); });
     sset('appearance_font_system', '1');
+  }
+
+  // ---------- 移动端底部避让(手势条设备) ----------
+  function gestureVals() {
+    var pad = parseInt(sget(KEY_GESTURE_PAD), 10); if (isNaN(pad) || pad < 0) pad = 0;
+    var gap = parseInt(sget(KEY_GESTURE_GAP), 10); if (isNaN(gap) || gap < 0) gap = 0;
+    return { pad: pad, gap: gap };
+  }
+  // 独立 style tag:避让是设备差异,住脚本层;0/空=移除规则零影响
+  function applyGesture() {
+    var v = gestureVals();
+    var st = Pdoc.getElementById('appearance_gesture_style');
+    if (!v.pad && !v.gap) { if (st) st.remove(); return; }
+    if (!st) {
+      st = Pdoc.createElement('style');
+      st.id = 'appearance_gesture_style';
+      Pdoc.head.appendChild(st);
+    }
+    var css = '@media screen and (max-width: 1000px) {';
+    // 避让:输入栏内部加高,自身底色下填手势区,不露异色带
+    if (v.pad) css += '#send_form { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + ' + v.pad + 'px) !important; }';
+    // 间隔:chat 末尾留白,消息+箭头行整体抬(值须先吸收箭头行 30px 外挂)
+    if (v.gap) css += '#chat { padding-bottom: ' + v.gap + 'px !important; }';
+    css += '}';
+    st.textContent = css;
   }
 
   // ---------- 面板 ----------
@@ -346,6 +375,51 @@
     }
     buildFontBlocks();
 
+    // ---- 避让组 ----
+    p.appendChild(el('div', 'at-group', '移动端底部避让(全面屏手势条设备)'));
+    var gBlock = el('div', 'at-block');
+    var gT = el('div', 'at-block-title');
+    gT.appendChild(Pdoc.createTextNode('底部避让 / 箭头间隔'));
+    function gestureStateTxt() {
+      var v = gestureVals();
+      return (v.pad || v.gap) ? '· 当前: 开启(' + v.pad + '/' + v.gap + ')' : '· 当前: 关闭';
+    }
+    var gState = el('span', 'at-state', gestureStateTxt());
+    gT.appendChild(gState);
+    gBlock.appendChild(gT);
+    var gv0 = gestureVals();
+    var inpPad = el('input', 'at-input');
+    inpPad.placeholder = '推荐22 输入栏上抬,不与底部手势条重叠';
+    inpPad.value = gv0.pad ? String(gv0.pad) : '';
+    var inpGap = el('input', 'at-input');
+    inpGap.placeholder = '推荐60 拉开与滑动箭头距离防误碰';
+    inpGap.value = gv0.gap ? String(gv0.gap) : '';
+    gBlock.appendChild(inpPad);
+    gBlock.appendChild(inpGap);
+    var bGApply = el('span', 'at-mini', '应用');
+    bGApply.addEventListener('click', function () {
+      var pad = parseInt(inpPad.value, 10); if (isNaN(pad) || pad < 0) pad = 0;
+      var gap = parseInt(inpGap.value, 10); if (isNaN(gap) || gap < 0) gap = 0;
+      sset(KEY_GESTURE_PAD, String(pad));
+      sset(KEY_GESTURE_GAP, String(gap));
+      applyGesture();
+      toast((pad || gap) ? '已应用: 底部避让 ' + pad + '/' + gap : '已应用: 底部避让关闭');
+      gState.textContent = gestureStateTxt();
+    });
+    var bGClear = el('span', 'at-mini', '恢复默认');
+    bGClear.addEventListener('click', function () {
+      sdel(KEY_GESTURE_PAD);
+      sdel(KEY_GESTURE_GAP);
+      applyGesture();
+      toast('已恢复默认: 底部避让关闭');
+      gState.textContent = gestureStateTxt();
+    });
+    var gBtns = el('div');
+    gBtns.appendChild(bGApply);
+    gBtns.appendChild(bGClear);
+    gBlock.appendChild(gBtns);
+    p.appendChild(gBlock);
+
     Pdoc.body.appendChild(backdrop);
     Pdoc.body.appendChild(p);
     layoutPanel(p);
@@ -390,6 +464,7 @@
     } else {
       restoreAllFonts();
     }
+    applyGesture();
     ensureMenuItem();
   }
 
