@@ -412,6 +412,13 @@ code {
   background-repeat: no-repeat !important;
   background-position: center !important;
 }
+/* 隔离面板滚动条兼容入口:颜色继承进 Shadow DOM。
+ * 不设全局标准属性,保留外部 WebKit 滚动条与悬停设计。
+ * 后续同类面板须确认宿主后加入此选择器组,不猜测通用 ID。 */
+#qqj-panel-host {
+  scrollbar-color: color-mix(in srgb, var(--SmartThemeQuoteColor) 50%, transparent) transparent;
+}
+
 /* 推理块展开限高+内容滚动(全端55vh):收起点始终可见,手机阅读/编辑不用滚太远 */
 #chat .mes_reasoning {
     max-height: 55vh !important;
