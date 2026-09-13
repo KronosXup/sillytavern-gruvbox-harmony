@@ -79,6 +79,13 @@ function compileTheme(name, partsDir) {
  */
 function postFormat(css) {
   let out = css.replace(/@import url\("([^"]+)"\)/g, (m, u) => `@import url('${u}')`);
+  // QuickBar resets SVG backgrounds but may cache empty theme glyphs.
+  // Keep its FA pseudo-elements native, including dynamically opened portals.
+  // :where keeps selector specificity unchanged outside these plugin surfaces.
+  const quickBarNative = '#input_helper_toolbar *, .ih-folder-dropdown-portal *, .ih-dialog-overlay *, .ih-find-bar *, .ih-floating-panel *, .ih-floating-ball *';
+  out = out.replace(/([^{}]+)\{/g, (block, selector) =>
+    selector.replace(/(\.fa-[\w-]+)(::before)/g,
+      `$1:not(:where(${quickBarNative}))$2`) + '{');
   return out;
 }
 
