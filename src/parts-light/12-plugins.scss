@@ -478,6 +478,20 @@ body.th-modern-enabled .th-modern-mobile-world-picker-search input:focus {
   background-position: center !important;
 }
 
+/* 织幕楼层面板在正文之后:按钮留位必须放在 mes_block 底部,
+ * 不能只留在面板上方的 mes_text。 */
+#chat .mes .mes_block:has(> .st-esg-message-floor-panel) {
+  padding-bottom: 44px !important;
+}
+#chat .mes .mes_block:has(> .st-esg-message-floor-panel):has(.edit_textarea) {
+  padding-bottom: 92px !important;
+}
+/* 编辑态按钮空间已由外层承担,撤掉正文里的重复留白。
+ * 不改变消息头、按钮定位或织幕面板显隐。 */
+#chat .mes .mes_block:has(> .st-esg-message-floor-panel) > .mes_text:has(.edit_textarea) {
+  padding-bottom: 0 !important;
+}
+
 /* BaiBai-Book楼内摘要面板:有host的消息底部留44px,防编辑按钮/swipe浮在面板上(不装插件零命中) */
 #chat .mes:has(.bbs-fp-host) .mes_block {
   padding-bottom: 44px !important;
