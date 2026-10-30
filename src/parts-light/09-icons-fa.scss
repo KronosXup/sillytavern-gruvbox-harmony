@@ -2090,6 +2090,25 @@ h4.margin0,
   font-size: calc(var(--mainFontSize) * 1.1) !important;
   text-align: center !important;
 }
+/* 两三事、构画、千千结、千机伞:原生 SVG 沿用菜单图标槽,保留各自图案与比例。 */
+#extensionsMenu :is(#pocket-phone-launch, #pocket-phone-card-launch, #sp_open_wand, #qqj_open_wand, #st-tools-open-wand) > .extensionsMenuExtensionButton {
+  box-sizing: border-box;
+  flex: 0 0 1.25em !important;
+  max-width: 1.25em !important;
+  height: 20px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+}
+#extensionsMenu :is(#pocket-phone-launch, #pocket-phone-card-launch, #sp_open_wand, #qqj_open_wand, #st-tools-open-wand) > .extensionsMenuExtensionButton > svg {
+  display: block !important;
+  flex: none !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 !important;
+}
 /* 角色卡管理入口:扩展内嵌层叠SVG改为Phosphor cards-three,不影响其它扩展图标 */
 #extensionsMenu #charManagerBtn .extensionsMenuExtensionButton svg {
   display: none !important;
